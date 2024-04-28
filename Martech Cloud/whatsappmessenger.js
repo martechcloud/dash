@@ -1,8 +1,37 @@
 function sendTest() {
+    document.getElementById('sendButton').style.backgroundColor = 'lightgrey';
+    document.getElementById('sendButton').style.border = 'lightgrey';
     // Get the input values
     var templateName = document.getElementById("nameWithTitle").value;
     var phoneNumber = document.getElementById("emailWithTitle").value;
     var password = document.getElementById("dobWithTitle").value;
+
+    // Validation for empty input fields
+    if (templateName.trim() === '' || phoneNumber.trim() === '' || password.trim() === '') {
+        document.getElementById('almessage').innerHTML = "Some fields are missing!"
+        var box2 = document.getElementById("box2");
+            box2.style.display = "inline-block";
+            setTimeout(function () {
+                box2.style.display = "none";
+                document.getElementById('sendButton').style.backgroundColor = '';
+                document.getElementById('sendButton').style.border = '';
+            }, 3000);
+        return;
+    }
+
+    // Validation for phone number pattern
+    var phonePattern = /^[0-9]{12}$/;
+    if (!phonePattern.test(phoneNumber)) {
+        document.getElementById('almessage').innerHTML = "Phone Number is not valid!"
+        var box2 = document.getElementById("box2");
+            box2.style.display = "inline-block";
+            setTimeout(function () {
+                box2.style.display = "none";
+                document.getElementById('sendButton').style.backgroundColor = '';
+                document.getElementById('sendButton').style.border = '';
+            }, 3000);
+        return;
+    }
 
     var formData = new FormData();
     formData.append('templateName', templateName);
@@ -18,7 +47,6 @@ function sendTest() {
     })
     .then(function (data) {
         if (data.redirectUrl) {
-            document.getElementById('dobWithTitle').disabled = true;
             document.getElementById('emailWithTitle').value = '';
             document.getElementById('dobWithTitle').value = '';
             var box = document.getElementById("box");
@@ -27,18 +55,17 @@ function sendTest() {
                 box.style.display = "none";
             }, 3000);
             $('#modalCenter').modal('hide');
-            document.getElementById('dobWithTitle').disabled = false;
+            document.getElementById('sendButton').style.backgroundColor = '';
+            document.getElementById('sendButton').style.border = '';
         } else {
-            document.getElementById('dobWithTitle').disabled = true;
-            document.getElementById('emailWithTitle').value = '';
-            document.getElementById('dobWithTitle').value = '';
+            document.getElementById('almessage').innerHTML = "Incorrect Password!"
             var box2 = document.getElementById("box2");
             box2.style.display = "inline-block";
             setTimeout(function () {
                 box2.style.display = "none";
             }, 3000);
-            $('#modalCenter').modal('hide');
-            document.getElementById('dobWithTitle').disabled = false;
+            document.getElementById('sendButton').style.backgroundColor = '';
+            document.getElementById('sendButton').style.border = '';
         }
     })
     .catch(function (error) {
