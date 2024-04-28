@@ -65,6 +65,25 @@
   </head>
 
   <body>
+   <style>
+        .card {
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+          transform: scale(1.05);
+        }
+        
+        .card-img-top {
+          transition: transform 0.3s ease;
+        }
+        
+        .card:hover .card-img-top {
+          transform: scale(1.1);
+        }
+      </style>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
