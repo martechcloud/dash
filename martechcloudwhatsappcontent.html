@@ -380,48 +380,47 @@
         </div>
 
           <script>
-            // Array of image filenames
-            fetch('Martech Cloud/martechcloud_whatsapp_templates/martechcloud_whatsapp_templates.txt')
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(text => {
-              const images = text.split('\n').map(filename => filename.trim());
-              // Function to generate cards
-            function generateCards() {
-              const cardContainer = document.getElementById('card-container');
-              images.forEach((image, index) => {
-                const card = `
-                  <div class="col-md-4 col-lg-4 mb-4">
-                    <div class="card h-100" id="card-${index}">
-                      <div class="card-body">
-                        <h5 class="card-title">${image.split('.')[0]}</h5>
-                      </div>
-                      <img class="img-fluid card-img-top" src="Martech Cloud/martechcloud_whatsapp_templates/${image}" alt="Card image cap" />
-                      <div class="card-body" style="text-align: center;">
-                        <a href="javascript:void(0);" class="card-link" onclick="openModal('${image.split('.')[0]}')">Send Test</a>
-                      </div>
-                    </div>
-                  </div>
-                `;
-                cardContainer.innerHTML += card;
-              });
+    // Array of image filenames
+    fetch('Martech Cloud/martechcloud_whatsapp_templates/martechcloud_whatsapp_templates.txt')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-          
+            return response.text();
+        })
+        .then(text => {
+            const images = text.split('\n').map(filename => filename.trim());
+            // Function to generate cards
+            function generateCards() {
+                const cardContainer = document.getElementById('card-container');
+                images.slice(0, -1).forEach((image, index) => { // Exclude the last image
+                    const card = `
+                        <div class="col-md-4 col-lg-4 mb-4">
+                            <div class="card h-100" id="card-${index}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${image.split('.')[0]}</h5>
+                                </div>
+                                <img class="img-fluid card-img-top" src="Martech Cloud/martechcloud_whatsapp_templates/${image}" alt="Card image cap" />
+                                <div class="card-body" style="text-align: center;">
+                                    <a href="javascript:void(0);" class="card-link" onclick="openModal('${image.split('.')[0]}')">Send Test</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    cardContainer.innerHTML += card;
+                });
+            }
+
             // Call the function to generate cards when the page loads
             window.onload = generateCards;
-          
+
             // Function to zoom the card
             function zoomCard(index) {
-              const card = document.getElementById(`card-${index}`);
-              card.classList.toggle('hovered');
+                const card = document.getElementById(`card-${index}`);
+                card.classList.toggle('hovered');
             }
-            })
-          </script>
-
+        })
+</script>
           <script>
             function openModal(imageName) {
                 const nameInput = document.getElementById('nameWithTitle');
