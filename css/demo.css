@@ -3,6 +3,34 @@
 * File include item demo only specific css only
 ******************************************************************************/
 
+
+/* Width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #696cff;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #696cff;
+}
+
+.bs-toast {
+  display: none;
+}
+
+
+
 .menu .app-brand.demo {
   height: 64px;
   margin-top: 12px;
