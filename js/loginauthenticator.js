@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (key === null) {
         // Redirect to another page
-        window.location.href = "anotherPage.html";
+        window.location.href = "https://martechcloud.github.io/dash/index.html";
     } else {
         console.log(key);
     }
