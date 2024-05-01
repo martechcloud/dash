@@ -173,7 +173,7 @@
             </li>
             <li class="menu-item">
               <a
-                href="www.martechcloud.in"
+                href="index.html"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-power-off me-2"></i>
@@ -276,6 +276,22 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
+            <div
+              class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0"
+              role="alert"
+              id = "IPMissmatched"
+              aria-live="assertive"
+              aria-atomic="true"
+              >
+              <div class="toast-header">
+                  <i class="bx bx-bell me-2"></i>
+                  <div class="me-auto fw-semibold">Martech Cloud</div>
+                  <small>0 mins ago</small>
+              </div>
+              <div id = "almessage" class="toast-body">
+                  IP Mismatched! Please whitelist your IP.
+              </div>
+           </div>
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
@@ -832,6 +848,7 @@
 
     <!-- Page JS -->
     <script src="Martech Cloud/dashboards-analytics.js"></script>
+    <script src="Martech Cloud/authenticator.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js">

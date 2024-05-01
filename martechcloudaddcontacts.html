@@ -72,7 +72,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link"> <!--! Not sure what it is and what its implecations-->
+            <a href="martechclouddashboard.html" class="app-brand-link"> <!--! Not sure what it is and what its implecations-->
               <span class="app-brand-logo demo">
               </span>
               <span class="app-brand-text demo menu-text fw-bolder ms-0" style="text-transform: capitalize;">Martech Cloud</span>
@@ -88,7 +88,7 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item">
-              <a href="index.html" class="menu-link">
+              <a href="martechclouddashboard.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -165,7 +165,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="martechcloudbilling.html" class="menu-link">
+                  <a href="#" class="menu-link">
                     <div data-i18n="Error">Billing</div>
                   </a>
                 </li>
@@ -173,7 +173,7 @@
             </li>
             <li class="menu-item">
               <a
-                href="www.martechcloud.in"
+                href="index.html"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-power-off me-2"></i>
@@ -279,6 +279,23 @@
           <div class="form-check form-switch mb-2" style="padding-left: 80px; padding-top: 30px;">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" unchecked />
             <label class="form-check-label" for="flexSwitchCheckChecked">Custom Attributes</label>
+          </div>
+
+          <div
+            class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0"
+            role="alert"
+            id = "IPMissmatched"
+            aria-live="assertive"
+            aria-atomic="true"
+            >
+            <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Martech Cloud</div>
+                <small>0 mins ago</small>
+            </div>
+            <div id = "almessage" class="toast-body">
+                IP Mismatched! Please whitelist your IP.
+            </div>
           </div>
           <div
             class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0"
@@ -578,6 +595,7 @@
 
     <!-- Page JS -->
     <script src="Martech Cloud/addcontacts.js"></script>
+    <script src="Martech Cloud/authenticator.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
