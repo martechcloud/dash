@@ -19,6 +19,8 @@ function copyToClipboard(text) {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
+    var copyIcon = document.getElementById("copy-icon");
+    copyIcon.style.color = "#696cff";
 }
 
 // Call the function when the page loads
@@ -30,6 +32,7 @@ window.onload = function() {
         copyToClipboard(ipAddress);
     });
 };
+
 
 
 function submitip() {
@@ -55,9 +58,11 @@ function submitip() {
             box.style.display = "inline-block";
             document.getElementById('submitbutton').style.backgroundColor = '';
             document.getElementById('submitbutton').style.border = '';
+            document.getElementById("formAuthentication").reset();
             setTimeout(function() {
                 box.style.display = "none"; 
             }, 2000); // 10 seconds
+            window.location.href = "index.html"
         } else {
             var box2 = document.getElementById("box2");
             box2.style.display = "inline-block";
