@@ -41,7 +41,7 @@ function login() {
                         document.getElementById('submitbutton').style.border = '';
                         setTimeout(function() {
                             box.style.display = "none";
-                            window.location.href = "https://martechcloud.github.io/dash/martechcloudipwhitelisting.html";
+                            window.location.href = "martechcloudipwhitelisting.html";
                         }, 2000); // 10 seconds
                     } else if (data.redirectUrl === "Invalid username or password") {
                         var box2 = document.getElementById("box2");
