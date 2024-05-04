@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch(appScriptUrl)
     .then(response => response.json())
     .then(data => { 
-        sessionStorage.setItem("secondaryprofileusername", data[2][7]);
-        sessionStorage.setItem("secondaryprofilerole", data[2][2]); 
 
         var Username = sessionStorage.getItem("Username");
         var filteredRow = data.filter(function(row) {
@@ -14,6 +12,15 @@ document.addEventListener("DOMContentLoaded", function() {
         sessionStorage.setItem("profileusername", filteredRow[0][7]);
         sessionStorage.setItem("profilerole", filteredRow[0][2]); 
         document.getElementById('profileusername').textContent = filteredRow[0][7]; 
-        document.getElementById('profilerole').textContent = filteredRow[0][2];           
+        document.getElementById('profilerole').textContent = filteredRow[0][2];         
+        
+        var filteredRow = data.filter(function(row) {
+            return row[0] !== Username && row[0] !== "Username";
+        });
+        sessionStorage.setItem("secondaryprofileusername", filteredRow[0][7]);
+        sessionStorage.setItem("secondaryprofilerole", filteredRow[0][2]); 
+        document.getElementById('secondaryprofileusername').textContent = filteredRow[0][7]; 
+        document.getElementById('secondaryprofilerole').textContent = filteredRow[0][2]; 
+
     })
 })
