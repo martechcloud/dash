@@ -28,6 +28,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function handleResponse1(response) {
     if (response && response.result === "success") {
+        var firstNamedetails = document.getElementById("firstNamedetails").value;
+        var lastNamedetails = document.getElementById("lastNamedetails").value;
+        var fullName = firstNamedetails + " " + lastNamedetails;
+        sessionStorage.setItem("profileusername", fullName);
+        var fullName = firstNamedetails + " " + lastNamedetails;
+        sessionStorage.setItem("profileusername", fullName);
         document.getElementById('submitbutton').style.backgroundColor = '';
         document.getElementById('submitbutton').style.border = '';
         var box = document.getElementById("box");
@@ -61,6 +67,7 @@ function adddetails() {
     var lastNamedetails = document.getElementById("lastNamedetails").value;
     var emaildetails = document.getElementById("emaildetails").value;
     var phoneNumberdetails = document.getElementById("phoneNumberdetails").value;
+    
 
     if (phoneNumberdetails !== "") {
         var phonePattern = /^[0-9]{12}$/;
