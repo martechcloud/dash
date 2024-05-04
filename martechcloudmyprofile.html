@@ -226,8 +226,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">Sahil Thombare</span>
-                            <small class="text-muted">Admin</small>
+                            <span id="profileusername" class="fw-semibold d-block">loading..</span>
+                            <small id="profilerole" class="text-muted"></small>
                           </div>
                         </div>
                       </a>
@@ -278,6 +278,39 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
+            <div
+            class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0"
+            role="alert"
+            id = "box2"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-header">
+              <i class="bx bx-bell me-2"></i>
+              <div class="me-auto fw-semibold">Martech Cloud</div>
+              <small>0 mins ago</small>
+            </div>
+            <div id = "almessage" class="toast-body">
+              Failed!
+            </div>
+          </div>
+
+          <div
+            class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0"
+            role="alert"
+            id = "box"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-header">
+              <i class="bx bx-bell me-2"></i>
+              <div class="me-auto fw-semibold">Martech Cloud</div>
+              <small>0 mins ago</small>
+            </div>
+            <div class="toast-body">
+              New contact has been uploaded in the database sucessfully!
+            </div>
+          </div>
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account /</span> My Profile</h4>
@@ -323,61 +356,60 @@
                       <form id="formAccountSettings" method="POST" onsubmit="return false">
                         <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="username" class="form-label">User name</label>
+                            <label class="form-label" for="usernamedetails" >User name</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="Username"
-                              name="Username"
+                              id="usernamedetails"
+                              name="usernamedetails"
                               value=""
                               autofocus
                             disabled/>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="username" class="form-label">Role Type</label>
+                            <label for="roledetails" class="form-label">Role Type</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="Role"
-                              name="Role"
+                              id="roledetails"
+                              name="roledetails"
                               value=""
                               autofocus
                             disabled/>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">First Name</label>
+                            <label for="firstNamedetails" class="form-label">First Name</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="firstName"
-                              name="firstName"
+                              id="firstNamedetails"
+                              name="firstNamedetails"
                               value=" "
                               autofocus
                             disabled/>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value=" " disabled/>
+                            <label for="lastNamedetails" class="form-label">Last Name</label>
+                            <input class="form-control" type="text" name="lastNamedetails" id="lastNamedetails" value=" " disabled/>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">E-mail</label>
+                            <label for="emaildetails" class="form-label">E-mail</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="email"
-                              name="email"
+                              id="emaildetails"
+                              name="emaildetails"
                               value=" "
                               placeholder=" "
                             disabled/>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Phone Number</label>
+                            <label class="form-label" for="phoneNumberdetails">Phone Number</label>
                             <div class="input-group input-group-merge">
-                              <span class="input-group-text">IN (+91)</span>
                               <input
                                 type="text"
-                                id="phoneNumber"
-                                name="phoneNumber"
+                                id="phoneNumberdetails"
+                                name="phoneNumberdetails"
                                 class="form-control"
                                 placeholder=" "
                               disabled/>
@@ -421,6 +453,13 @@
             </div>
             <!-- / Content -->
 
+    <script>
+      document.getElementById("formAccountSettings").addEventListener("submit", function(e) {
+        e.preventDefault();
+        adddetails(); 
+      });
+    </script>
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="libs/jquery/jquery.js"></script>
@@ -428,18 +467,19 @@
     <script src="js/bootstrap.js"></script>
     <script src="libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
+    <script src="js/loginauthenticator.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="Martech Cloud/profile.js"></script>
+
     <script src="js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="js/main.js"></script>
-    <script src="js/loginauthenticator.js"></script>
-    <script src="js/logout.js"></script>
-
+    <script src="Martech Cloud/profile.js"></script>
     <script src="Martech Cloud/myprofile.js"></script>
-
+    <script src="js/main.js"></script>
     <!-- Page JS -->
     <script src="js/pages-account-settings-account.js"></script>
 

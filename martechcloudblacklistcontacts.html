@@ -226,8 +226,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">Sahil Thombare</span>
-                            <small class="text-muted">Admin</small>
+                            <span id="profileusername" class="fw-semibold d-block">loading..</span>
+                            <small id="profilerole" class="text-muted"></small>
                           </div>
                         </div>
                       </a>
@@ -294,23 +294,6 @@
             </div>
             <div class="toast-body">
               Contact Blacklisted Successfully!
-            </div>
-          </div>
-
-          <div
-            class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0"
-            role="alert"
-            id = "IPMissmatched"
-            aria-live="assertive"
-            aria-atomic="true"
-            >
-            <div class="toast-header">
-                <i class="bx bx-bell me-2"></i>
-                <div class="me-auto fw-semibold">Martech Cloud</div>
-                <small>0 mins ago</small>
-            </div>
-            <div id = "almessage" class="toast-body">
-                IP Mismatched! Please whitelist your IP.
             </div>
           </div>
 
@@ -477,6 +460,10 @@
     <script src="libs/popper/popper.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    
+    <script src="js/loginauthenticator.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="Martech Cloud/profile.js"></script>
 
     <script src="js/menu.js"></script>
     <!-- endbuild -->
@@ -489,8 +476,7 @@
 
     <!-- Page JS -->
     <script src="Martech Cloud/blacklistcontacts.js"></script>
-    <script src="js/loginauthenticator.js"></script>
-    <script src="js/logout.js"></script>
+    
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
