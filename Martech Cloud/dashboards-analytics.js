@@ -6,12 +6,6 @@
 
 'use strict';
 
-require('dotenv').config();
-
-const apiKey = process.env.API_KEY;
-
-console.log(apiKey)
-
 (function () {
   const appScriptUrl = "https://script.google.com/macros/s/AKfycbwdZZ8Y357eQB4jeCyKvmfrPap8Q3vmNZjZGIXyyUlkN8eSNmsft0oNyzZ5Fbs42OSi/exec?sheet=Dashboard"; // Replace with your actual URL
   fetch(appScriptUrl)
