@@ -30,8 +30,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         sessionStorage.setItem("secondaryprofileusername", filteredRow[0][7]);
         sessionStorage.setItem("secondaryprofilerole", filteredRow[0][2]); 
-        document.getElementById('secondaryprofileusername').textContent = filteredRow[0][7]; 
-        document.getElementById('secondaryprofilerole').textContent = filteredRow[0][2]; 
-
     })
 })
