@@ -6,10 +6,20 @@
 
 'use strict';
 
+function decryptURL(encryptedUrl, password) {
+    var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+    return decrypted;
+  }
+var encryptedUrl1 = "U2FsdGVkX1+AMu46XfirrQRngfG3TMOJhavAIojuutPwpr928U3qhhV48Ze/lmBmyVnFDuXzK3TPMYp+KuevsGKI9LaVc0cGZBcL9R+iEBInLkdgZygtnzPP36yJBzXWj00SyuRGp1Ui6HRnl20eeMxMwmzQmfxHpCOeTC2/32L0GudFfliCevbJDFMvRXoy";
+var encryptedUrl2 = "U2FsdGVkX1+7rLFZmXqm1mLp5E+HPy5SUXO5/IRhkQ9EqDBDiwDJs9SUMbBhhnwQsl7oaFQzG0hIefP6xRAARKASxPATG+EKF6agPjaBaCHKOj+ydme3DncGSN//lKZf+ba5A5ZOmNNYu8o3GyFWkntA3iTkUwymRuNF5pTdM99qB+ZOex89/p/6DM8DV6SK";
+var password = 'secret';
+
+
 function loadtable() {
     var loadingspinner = document.getElementById("loadingspinner");
     loadingspinner.style.display = "inline-block";
-    fetch('https://script.google.com/macros/s/AKfycbwdZZ8Y357eQB4jeCyKvmfrPap8Q3vmNZjZGIXyyUlkN8eSNmsft0oNyzZ5Fbs42OSi/exec?sheet=Sheet1')
+    var decryptedUrl = decryptURL(encryptedUrl1, password);
+    fetch(decryptedUrl)
         .then(response => response.json())
         .then(data => {
             const tableBody = document.querySelector('#dataTable tbody');
@@ -140,7 +150,8 @@ function editcontact() {
     }
 
     var script = document.createElement('script');
-    script.src = "https://script.google.com/macros/s/AKfycbzpyf_9pT91KKIxKlxEiixvSxvMy_QfeDfXB3V1_YDkIBZE_hw7euu-ovCYk_e-6Hlp/exec" +
+    var decryptedUrl = decryptURL(encryptedUrl2, password);
+    script.src = decryptedUrl +
                  "?callback=handleResponse2" +
                  "&key=" + encodeURIComponent(key) +
                  "&name=" + encodeURIComponent(name) +

@@ -1,3 +1,9 @@
+function decryptURL(encryptedUrl, password) {
+  var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+  return decrypted;
+}
+var encryptedUrl = "U2FsdGVkX1/xwj7h01dOahh9ZglmdtbB3H2hA1FgMO8Y/b9vjFjuLbs5DTFPog6mT7SqFhY/EbD26PeGUfKyBDlA2kHfTvGjjeZXSMg7VPMKnu916J5G5pPv73ypTmEG9IcqBzeVUwKs6jLqDC231A+a0SOcK/AQ830aFeWayuQ3MB5yO5NtHWPCJsePd5al";
+var password = 'secret';
 
 function blacklistemail() {
     document.getElementById('blacklistemail').style.backgroundColor = 'lightgrey';
@@ -12,8 +18,9 @@ function blacklistemail() {
     formData.append('reason', reason);
     formData.append('password', password);
     formData.append('phoneRadio', phoneRadio);
-
-    fetch('https://script.google.com/macros/s/AKfycby5h3Q63d3jhzMv5_tPuctffPkg64wQrfNj5O88RVZqZ0pgNi49UB91E3NO_rjIMy0k/exec', {
+    
+    var decryptedUrl = decryptURL(encryptedUrl, password);
+    fetch(decryptedUrl, {
     method: "POST",
     body: formData,
     })
@@ -62,7 +69,8 @@ function blacklistphone() {
     formData.append('password', password);
     formData.append('phoneRadio', phoneRadio1);
 
-    fetch('https://script.google.com/macros/s/AKfycby5h3Q63d3jhzMv5_tPuctffPkg64wQrfNj5O88RVZqZ0pgNi49UB91E3NO_rjIMy0k/exec', {
+    var decryptedUrl = decryptURL(encryptedUrl, password);
+    fetch(decryptedUrl, {
     method: "POST",
     body: formData,
     })

@@ -1,3 +1,10 @@
+function decryptURL(encryptedUrl, password) {
+    var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+    return decrypted;
+  }
+var encryptedUrl = "U2FsdGVkX1/b0FthQt2SSDRmD23vl+c8XYZTEo1HO3rocivn3tuiojQ3xiuO2z6duO5fgX321Z7aJuSMDumPKjYwStStECFHUpLwrMDNSj39DimLknIKyYXMiMVPOAoO/VsVbk1y1yAf/2o80vO+zY17a+OeNeMZ+d0b4cSIOY4Xxdoym7m+5li7iMxhYVJr";
+var password = 'secret';
+
 function sendTest() {
     document.getElementById('sendButton').style.backgroundColor = 'lightgrey';
     document.getElementById('sendButton').style.border = 'lightgrey';
@@ -37,8 +44,9 @@ function sendTest() {
     formData.append('templateName', templateName);
     formData.append('phoneNumber', phoneNumber);
     formData.append('password', password);
-
-    fetch('https://script.google.com/macros/s/AKfycbxZxQkqWJUceCAhDWKpBmpq-ex--76FVm8ihslC5Qhfdsl04krFAeZF0vyH5tnsJduSfw/exec', {
+    
+    var decryptedUrl = decryptURL(encryptedUrl1, password);
+    fetch(decryptedUrl, {
         method: "POST",
         body: formData,
     })

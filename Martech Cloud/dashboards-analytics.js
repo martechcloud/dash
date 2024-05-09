@@ -3,12 +3,18 @@
  */
 
 
-
 'use strict';
 
+function decryptURL(encryptedUrl, password) {
+  var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+  return decrypted;
+}
+var encryptedUrl = "U2FsdGVkX1/2PRY2UrQiXilCkI/lRkUeUU7um4ymh6QF+nNv4PJYlXY0YNzUUO2Kxzt015TdssO5GSDzSDIIrVLOre/4I+LWKO/MCveV4qhx/LCK61KXwEbnD4Fm/rbEkQcWnQVakIEPsYt5dUpHEqVv+Wj7HNXjJ+O1hEEzdwzBg4atzsFRgXdZ2qoXbOnKQMBzBpYOtU6jhfaYR7z8ww==";
+var password = 'secret';
+var decryptedUrl = decryptURL(encryptedUrl, password);
+
 (function () {
-  const appScriptUrl = "https://script.google.com/macros/s/AKfycbwdZZ8Y357eQB4jeCyKvmfrPap8Q3vmNZjZGIXyyUlkN8eSNmsft0oNyzZ5Fbs42OSi/exec?sheet=Dashboard"; // Replace with your actual URL
-  fetch(appScriptUrl)
+  fetch(decryptedUrl)
     .then(response => response.json())
     .then(data => {    
       document.getElementById('todayengagers').innerHTML = data[1][4];

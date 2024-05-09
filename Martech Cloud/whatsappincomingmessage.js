@@ -1,10 +1,17 @@
 'use strict';
 
 async function fetchAndDisplayMessages() {
+    function decryptURL(encryptedUrl, password) {
+        var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+        return decrypted;
+    }
+    var encryptedUrl = "U2FsdGVkX1/sZJvdiwlUYyJedvckjf8NeX7SP/HpDheZ1ybIpIKW7U/yesPj8wEuVy7LmoB8roVj/af3u3I55Je60BCeInWARY7dm2r97HlNEjH5X/HVr/h553Jm4nqF6ApAs++WbkaobVW7M69G6ygdmCdrl6GfJmh0Lf5ODPM=";
+    var password = 'secret';
+    var decryptedUrl = decryptURL(encryptedUrl, password);
+
     document.getElementById('refreshMessages').style.backgroundColor = 'lightgrey';
     document.getElementById('refreshMessages').style.border = 'lightgrey';
-    const url = "https://script.google.com/macros/s/AKfycbwNu4oJZ6UgvY99QcX-ntTAO2-xex0KuDO3DAIozxjcdmEPOHZ8dMR1Qs2t0wbTSYk/exec";
-    const response = await fetch(url);
+    const response = await fetch(decryptedUrl);
     const data = await response.json();
 
     const filteredData = data.filter(message => message.phoneNumber === 918208710562);
@@ -64,7 +71,12 @@ async function fetchAndDisplayMessages() {
         messagesContainer.appendChild(messageDiv);
         document.getElementById('refreshMessages').style.backgroundColor = '';
         document.getElementById('refreshMessages').style.border = '';
+        var box = document.getElementById("box");
+        box.style.display = "inline-block";
+        document.getElementById('success').innerHTML = "Message Refreshed!";
+        setTimeout(function () {
+            box.style.display = "none";
+        }, 3000);
     });
 }
 
-window.onload = fetchAndDisplayMessages;

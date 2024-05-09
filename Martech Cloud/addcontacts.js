@@ -1,10 +1,25 @@
 
+function decryptURL(encryptedUrl, password) {
+    var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+    return decrypted;
+}
+var encryptedUrl1 = "U2FsdGVkX1/pY4u5LflKTMCVuvTTftmbslAoTb66tzE7wF6O5qQUNDwJBUMcJCbfecGVcDOjNNHfSewjP31pPKNMh92jNI5LrZeM3vKQgu5BerkUYXBpZUxbgOUtt3LrEkI1Gz/4q7pg5/pHA4FSgJaTHaolJ5+7ZB1LQJie2ycI4QtBLxuxxYM3RlRrcIXN";
+var encryptedUrl2 = "U2FsdGVkX1+4pBsIt87Cq+jf+FmFgD0E0vfSaOb52pBsHYeR+WUcrp42RAB86rXqlr7Y73pJMG9dFxScQRgi5D99p0+HDn63Ju5HS7lGpqxkHE/fwYMn5P0zFgj5sH2Le0UM1Y08pv4Pahe8KUktx2+1O0YxZryd5u5McD/u6hL1DowFNkn0eQkdOC7e97m4";
+var password = 'secret';
+
+
 function handleResponse1(response) {
     if (response && response.result === "success") {
-        document.getElementById('submitbutton1').style.backgroundColor = '';
-        document.getElementById('submitbutton1').style.border = '';
-        document.getElementById('submitbutton2').style.backgroundColor = '';
-        document.getElementById('submitbutton2').style.border = '';
+        var submitButton = document.getElementById('submitbutton1')
+        submitButton.style.backgroundColor = '';
+        submitButton.style.border = '';
+        submitButton.disabled = false;
+
+        var submitButton2 = document.getElementById('submitbutton2')
+        submitButton2.style.backgroundColor = '';
+        submitButton2.style.border = '';
+        submitButton2.disabled = false;
+
         var box = document.getElementById("box");
         box.style.display = "inline-block";
         setTimeout(function () {
@@ -13,10 +28,16 @@ function handleResponse1(response) {
             document.getElementById("dataForm2").reset();
         }, 2000);
     } else {
-        document.getElementById('submitbutton1').style.backgroundColor = '';
-        document.getElementById('submitbutton1').style.border = '';
-        document.getElementById('submitbutton2').style.backgroundColor = '';
-        document.getElementById('submitbutton2').style.border = '';
+        var submitButton = document.getElementById('submitbutton1')
+        submitButton.style.backgroundColor = '';
+        submitButton.style.border = '';
+        submitButton.disabled = false;
+
+        var submitButton2 = document.getElementById('submitbutton2')
+        submitButton2.style.backgroundColor = '';
+        submitButton2.style.border = '';
+        submitButton2.disabled = false;
+
         var box2 = document.getElementById("box2");
         box2.style.display = "inline-block";
         setTimeout(function () {
@@ -27,8 +48,11 @@ function handleResponse1(response) {
 
 
 function addcontact1() {
-    document.getElementById('submitbutton1').style.backgroundColor = 'lightgrey';
-    document.getElementById('submitbutton1').style.border = 'lightgrey';
+    var submitButton = document.getElementById('submitbutton1')
+    submitButton.style.backgroundColor = 'lightgrey';
+    submitButton.style.border = 'lightgrey';
+    submitButton.disabled = true;
+
     var key = document.getElementById("key").value;
     var name = document.getElementById("name").value;
     var number = document.getElementById("number").value;
@@ -65,7 +89,8 @@ function addcontact1() {
     }
 
     var script = document.createElement('script');
-    script.src = "https://script.google.com/macros/s/AKfycbzpyf_9pT91KKIxKlxEiixvSxvMy_QfeDfXB3V1_YDkIBZE_hw7euu-ovCYk_e-6Hlp/exec" +
+    var decryptedUrl1 = decryptURL(encryptedUrl1, password);
+    script.src = decryptedUrl1 +
                  "?callback=handleResponse1" +
                  "&key=" + encodeURIComponent(key) +
                  "&name=" + encodeURIComponent(name) +
@@ -75,10 +100,12 @@ function addcontact1() {
 }
 
 
-
 function addcontact2() {
-    document.getElementById('submitbutton2').style.backgroundColor = 'lightgrey';
-    document.getElementById('submitbutton2').style.border = 'lightgrey';
+    var submitButton2 = document.getElementById('submitbutton2')
+    submitButton2.style.backgroundColor = 'lightgrey';
+    submitButton2.style.border = 'lightgrey';
+    submitButton2.disabled = true;
+
     var key = document.getElementById("key1").value;
     var name = document.getElementById("name1").value;
     var number = document.getElementById("number1").value;
@@ -116,7 +143,8 @@ function addcontact2() {
     }
 
     var script = document.createElement('script');
-    script.src = "https://script.google.com/macros/s/AKfycbzpyf_9pT91KKIxKlxEiixvSxvMy_QfeDfXB3V1_YDkIBZE_hw7euu-ovCYk_e-6Hlp/exec" +
+    var decryptedUrl2 = decryptURL(encryptedUrl2, password);
+    script.src = decryptedUrl2 +
                  "?callback=handleResponse2" +
                  "&key=" + encodeURIComponent(key) +
                  "&name=" + encodeURIComponent(name) +

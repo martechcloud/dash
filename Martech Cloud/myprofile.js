@@ -1,3 +1,10 @@
+function decryptURL(encryptedUrl, password) {
+    var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+    return decrypted;
+  }
+var encryptedUrl = "U2FsdGVkX1+vjpjaTPGQINTXDoLZlOiIP/lyWpUCDOmmKjols5B/MUFeLHkrkXTxLxekibE+3ij7X4MJ3TOMl3riJ2aYQ4buWmeCxIEr8VudaByRllAawGvZ+Ig4JgRE1m6wRVQbprusZ7Pl4ZXJNuYE9s6uz/9wJwmZ1P8+AgDuYf2FQiW2VG7+MsIIg6to";
+var password = 'secret';
+
 function handleResponse1(response) {
     if (response && response.result === "success") {
         var firstNamedetails = document.getElementById("firstNamedetails").value;
@@ -78,7 +85,8 @@ function adddetails() {
     }
 
     var script = document.createElement('script');
-    script.src = "https://script.google.com/macros/s/AKfycbzpyf_9pT91KKIxKlxEiixvSxvMy_QfeDfXB3V1_YDkIBZE_hw7euu-ovCYk_e-6Hlp/exec" +
+    var decryptedUrl = decryptURL(encryptedUrl1, password);
+    script.src = decryptedUrl +
                  "?callback=handleResponse1" +
                  "&key=" + encodeURIComponent(key) +
                  "&name=" + encodeURIComponent(name) +
