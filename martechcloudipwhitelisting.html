@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style customizer-hide"
@@ -26,7 +14,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Martech Cloud</title>
+    <title>Martech Cloud - IP Whitelist</title>
 
     <meta name="description" content="" />
 
@@ -59,8 +47,6 @@
     <!-- Helpers -->
     <script src="js/helpers.js"></script>
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="js/config.js"></script>
   </head>
 
@@ -120,7 +106,7 @@
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner py-4">
-          <!-- Forgot Password -->
+
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
@@ -135,26 +121,25 @@
                 <p id="ip-address"></p>
                 <span id="copy-icon" class="copy-icon"><i class="fas fa-copy"></i></span>
               </div>
-              <p class="mb-4">Enter the IP address displayed above along with your password.</p>
+              <p class="mb-4">Whitelist the IP address displayed above along with your password.</p>
               <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Ip Address</label>
+                  <label for="IP" class="form-label">Ip Address</label>
                   <input
                     type="text"
                     class="form-control"
                     id="IP"
-                    name="email"
+                    name="IP"
                     placeholder="Enter IP Address"
-                    autofocus
                   required/>
                 </div>
                 <div class="mb-3">
-                  <label for="email" class="form-label">Password</label>
+                  <label for="password" class="form-label">Password</label>
                   <input
                     type="password"
                     class="form-control"
                     id="password"
-                    name="email"
+                    name="password"
                     placeholder="Enter your Password"
                     autofocus
                   required/>

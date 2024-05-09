@@ -58,6 +58,7 @@
 
     <!-- Helpers -->
     <script src="js/helpers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -204,14 +205,14 @@
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
                 <li class="nav-item lh-1 me-3">
-                  <a class="button" class="dropdown-item toggle-offcanvas" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-label="" title="Incoming Messages" style="color: grey;">
-                      <i class='bx bx-message' style='font-size: 25px'></i> <!-- Adjust font-size as needed -->
-                  </a>
+                  <button type="button" class="btn rounded-pill btn-icon btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" onclick="incomingmessage()" title="Incoming Messages">
+                    <span class="tf-icons bx bxl-whatsapp"></span>
+                  </button>
                 </li>
                 <li class="nav-item lh-1 me-3">
-                  <a class="button" href="https://www.martechcloud.in/" aria-label="" title="Notifications" style="color: grey;">
-                      <i class='bx bx-bell' style='font-size: 25px'></i> <!-- Adjust font-size as needed -->
-                  </a>
+                  <button type="button" class="btn rounded-pill btn-icon btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" title="Incoming Messages">
+                    <span class="tf-icons bx bx-bell"></span>
+                  </button>
                 </li>
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -314,7 +315,7 @@
               <div class="me-auto fw-semibold">Martech Cloud</div>
               <small>0 mins ago</small>
             </div>
-            <div class="toast-body">
+            <div id = "success" class="toast-body">
               New contact has been uploaded in the database sucessfully!
             </div>
           </div>
@@ -582,6 +583,18 @@
       });
     </script>
 
+    <script>
+      function incomingmessage() {
+        fetchAndDisplayMessages();
+      }
+    </script>
+
+    <script>
+      document.getElementById('refreshMessages').addEventListener('click', function() {
+            fetchAndDisplayMessages();
+        });
+    </script> 
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="libs/jquery/jquery.js"></script>
@@ -602,10 +615,12 @@
 
     <!-- Main JS -->
     <script src="js/main.js"></script>
+    <script src="Martech Cloud/whatsappincomingmessage.js"></script>
 
     <!-- Page JS -->
     <script src="Martech Cloud/addcontacts.js"></script>
     <script src="Martech Cloud/whatsappincomingmessage.js"></script>
+    
     
 
     <!-- Place this tag in your head or just before your close body tag. -->

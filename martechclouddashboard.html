@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -26,7 +14,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Martech Cloud</title>
+    <title>Martech Cloud - Dashboard</title>
 
     <meta name="description" content="" />
 
@@ -62,6 +50,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="js/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
   </head>
 
   <body>
@@ -204,14 +193,14 @@
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
                 <li class="nav-item lh-1 me-3">
-                  <a class="button" class="dropdown-item toggle-offcanvas" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-label="" title="Incoming Messages" style="color: grey;">
-                      <i class='bx bx-message' style='font-size: 25px'></i> <!-- Adjust font-size as needed -->
-                  </a>
+                  <button type="button" class="btn rounded-pill btn-icon btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" onclick="incomingmessage()" title="Incoming Messages">
+                    <span class="tf-icons bx bxl-whatsapp"></span>
+                  </button>
                 </li>
                 <li class="nav-item lh-1 me-3">
-                  <a class="button" href="https://www.martechcloud.in/" aria-label="" title="Notifications" style="color: grey;">
-                      <i class='bx bx-bell' style='font-size: 25px'></i> <!-- Adjust font-size as needed -->
-                  </a>
+                  <button type="button" class="btn rounded-pill btn-icon btn-outline-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" title="Incoming Messages">
+                    <span class="tf-icons bx bx-bell"></span>
+                  </button>
                 </li>
 
                 <!-- User -->
@@ -298,6 +287,22 @@
             </div>
           </div>
 
+          <div
+                class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0"
+                role="alert"
+                id = "box"
+                aria-live="assertive"
+                aria-atomic="true"
+              >
+              <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Martech Cloud</div>
+                    <small>0 mins ago</small>
+                </div>
+              <div id = "success" class="toast-body">
+                Green!
+              </div>
+              </div>
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
@@ -834,8 +839,18 @@
             </div>
             <!-- / Content -->
 
+    <script>
+      function incomingmessage() {
+        fetchAndDisplayMessages();
+      }
+    </script>
 
-            
+    <script>
+      document.getElementById('refreshMessages').addEventListener('click', function() {
+            fetchAndDisplayMessages();
+        });
+    </script>        
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="libs/jquery/jquery.js"></script>
@@ -859,10 +874,9 @@
     <!-- Page JS -->
     <script src="Martech Cloud/dashboards-analytics.js"></script>
     <script src="Martech Cloud/whatsappincomingmessage.js"></script>
-
+    <script src="Martech Cloud/identity.js"></script>
+    
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script src="Martech Cloud/masterprofile.js"></script>
-    <script src="js/encryptionpass.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js">
     
 

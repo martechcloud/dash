@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style customizer-hide"
@@ -41,9 +29,6 @@
       rel="stylesheet"
     />
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="fonts/boxicons.scss" />
-
     <!-- Core CSS -->
     <link rel="stylesheet" href="css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="css/theme-default.css" class="template-customizer-theme-css" />
@@ -66,40 +51,21 @@
   <body>
     <!-- Content -->
     <div
-        class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0"
-        role="alert"
-        id = "box2"
-        aria-live="assertive"
-        aria-atomic="true"
-        >
-        <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
-            <div class="me-auto fw-semibold">Martech Cloud</div>
-            <small>0 mins ago</small>
-        </div>
-        <div id = "almessage" class="toast-body">
-            Invalid Credentials!
-        </div>
+      class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0"
+      role="alert"
+      id = "alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      >
+      <div class="toast-header">
+          <i class="bx bx-bell me-2"></i>
+          <div class="me-auto fw-semibold">Martech Cloud</div>
+          <small>0 mins ago</small>
+      </div>
+      <div id = "alertmessage" class="toast-body">
+          Invalid Credentials!
+      </div>
     </div>
-
-    <div
-        class="bs-toast toast toast-placement-ex m-2 bg-danger bottom-0 end-0"
-        role="alert"
-        id = "IPMissmatched"
-        aria-live="assertive"
-        aria-atomic="true"
-        >
-        <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
-            <div class="me-auto fw-semibold">Martech Cloud</div>
-            <small>0 mins ago</small>
-        </div>
-        <div id = "almessage" class="toast-body">
-            IP Mismatched! Please whitelist your IP.
-        </div>
-    </div>
-
-
 
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
@@ -115,26 +81,24 @@
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">Welcome to Martech Cloud! 👋</h4>
-              <p class="mb-4">Sign-in to your account and start engagement</p>
+              <p class="mb-4">Log in to your account and begin your engagemnent journey.</p>
 
               <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label class="form-label" for="email" >Email</label>
                   <input
                     type="email"
                     class="form-control"
                     id="email"
-                    name="email-username"
-                    placeholder="Enter your email or username"
+                    name="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
                     autofocus
                   required/>
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
-                      <small>Forgot Password?</small>
-                    </a>
                   </div>
                   <div class="input-group input-group-merge">
                     <input
@@ -181,22 +145,30 @@
         });
     </script>
 
+    <script>
+      window.onload = function() {
+        try{
+          var email = localStorage.getItem('MartechUsername');
+          document.getElementById("email").value = email;
+        } 
+        catch {
+        }
+        
+      }
+    </script>
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="libs/jquery/jquery.js"></script>
     <script src="libs/popper/popper.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
     <script src="js/menu.js"></script>
     <!-- endbuild -->
-
     <!-- Vendors JS -->
     <script src="js/login.js"></script>
-
     <!-- Main JS -->
     <script src="js/main.js"></script>
-
     <!-- Page JS -->
   </body>
 </html>
