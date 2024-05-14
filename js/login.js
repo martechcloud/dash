@@ -5,7 +5,6 @@ function login() {
     submitButton.disabled = true;
 
     var username = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
 
     // Generate a random key
     var key = Math.random().toString(36).substr(2, 10);
@@ -22,6 +21,7 @@ function login() {
             var ipAddress = ipData.ip;
 
             var formData = new FormData();
+            var password = document.getElementById("password").value;
             formData.append("username", username);
             formData.append("password", password);
             formData.append("key", key);
