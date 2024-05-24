@@ -10,8 +10,9 @@ function decryptURL(encryptedUrl, password) {
   return decrypted;
 }
 var encryptedUrl = "U2FsdGVkX1/2PRY2UrQiXilCkI/lRkUeUU7um4ymh6QF+nNv4PJYlXY0YNzUUO2Kxzt015TdssO5GSDzSDIIrVLOre/4I+LWKO/MCveV4qhx/LCK61KXwEbnD4Fm/rbEkQcWnQVakIEPsYt5dUpHEqVv+Wj7HNXjJ+O1hEEzdwzBg4atzsFRgXdZ2qoXbOnKQMBzBpYOtU6jhfaYR7z8ww==";
-var password = 'secret';
+var password = sessionStorage.getItem("pass");
 var decryptedUrl = decryptURL(encryptedUrl, password);
+
 
 (function () {
   fetch(decryptedUrl)

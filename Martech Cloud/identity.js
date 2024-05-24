@@ -3,7 +3,7 @@ function decryptURL(encryptedUrl, password) {
     return decrypted;
 }
 var encryptedUrl = "U2FsdGVkX180FE/TIUdvg4fd8Swvm4prFqRof0jra1pKhquUxtw3O7MikyU2SHjf+SNKncasEl3H/ZPs0o6uVBgL0zDkRWdCJr1jUsztJ7XCO+r5chCMeAzt74MX81estMvGIA/WIYrcBObUpTkHjWqkPnrZFlSXAmWY2Io4c/vxpy2F8ekt/E4BRM2JQ0Fb31OwYEQT5Rzr6eqHuas7mg==";
-var password = 'secret';
+var password = sessionStorage.getItem("pass");
 var decryptedUrl = decryptURL(encryptedUrl, password);
 
 // MyProfile Master

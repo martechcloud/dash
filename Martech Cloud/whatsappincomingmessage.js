@@ -6,7 +6,7 @@ async function fetchAndDisplayMessages() {
         return decrypted;
     }
     var encryptedUrl = "U2FsdGVkX1/sZJvdiwlUYyJedvckjf8NeX7SP/HpDheZ1ybIpIKW7U/yesPj8wEuVy7LmoB8roVj/af3u3I55Je60BCeInWARY7dm2r97HlNEjH5X/HVr/h553Jm4nqF6ApAs++WbkaobVW7M69G6ygdmCdrl6GfJmh0Lf5ODPM=";
-    var password = 'secret';
+    var password = sessionStorage.getItem("pass");
     var decryptedUrl = decryptURL(encryptedUrl, password);
 
     document.getElementById('refreshMessages').style.backgroundColor = 'lightgrey';

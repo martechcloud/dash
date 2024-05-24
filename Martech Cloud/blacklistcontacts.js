@@ -3,7 +3,7 @@ function decryptURL(encryptedUrl, password) {
   return decrypted;
 }
 var encryptedUrl = "U2FsdGVkX1/xwj7h01dOahh9ZglmdtbB3H2hA1FgMO8Y/b9vjFjuLbs5DTFPog6mT7SqFhY/EbD26PeGUfKyBDlA2kHfTvGjjeZXSMg7VPMKnu916J5G5pPv73ypTmEG9IcqBzeVUwKs6jLqDC231A+a0SOcK/AQ830aFeWayuQ3MB5yO5NtHWPCJsePd5al";
-var password = 'secret';
+var password = sessionStorage.getItem("pass");
 
 function blacklistemail() {
     document.getElementById('blacklistemail').style.backgroundColor = 'lightgrey';

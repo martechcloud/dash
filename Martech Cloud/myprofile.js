@@ -3,7 +3,7 @@ function decryptURL(encryptedUrl, password) {
     return decrypted;
   }
 var encryptedUrl = "U2FsdGVkX1+vjpjaTPGQINTXDoLZlOiIP/lyWpUCDOmmKjols5B/MUFeLHkrkXTxLxekibE+3ij7X4MJ3TOMl3riJ2aYQ4buWmeCxIEr8VudaByRllAawGvZ+Ig4JgRE1m6wRVQbprusZ7Pl4ZXJNuYE9s6uz/9wJwmZ1P8+AgDuYf2FQiW2VG7+MsIIg6to";
-var password = 'secret';
+var password = sessionStorage.getItem("pass");
 
 function handleResponse1(response) {
     if (response && response.result === "success") {

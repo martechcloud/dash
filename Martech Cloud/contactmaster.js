@@ -12,7 +12,7 @@ function decryptURL(encryptedUrl, password) {
   }
 var encryptedUrl1 = "U2FsdGVkX1+AMu46XfirrQRngfG3TMOJhavAIojuutPwpr928U3qhhV48Ze/lmBmyVnFDuXzK3TPMYp+KuevsGKI9LaVc0cGZBcL9R+iEBInLkdgZygtnzPP36yJBzXWj00SyuRGp1Ui6HRnl20eeMxMwmzQmfxHpCOeTC2/32L0GudFfliCevbJDFMvRXoy";
 var encryptedUrl2 = "U2FsdGVkX1+7rLFZmXqm1mLp5E+HPy5SUXO5/IRhkQ9EqDBDiwDJs9SUMbBhhnwQsl7oaFQzG0hIefP6xRAARKASxPATG+EKF6agPjaBaCHKOj+ydme3DncGSN//lKZf+ba5A5ZOmNNYu8o3GyFWkntA3iTkUwymRuNF5pTdM99qB+ZOex89/p/6DM8DV6SK";
-var password = 'secret';
+var password = sessionStorage.getItem("pass");
 
 
 function loadtable() {
