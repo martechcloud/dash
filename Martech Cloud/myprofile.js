@@ -24,6 +24,7 @@ function handleResponse1(response) {
         var box = document.getElementById("box");
         box.style.display = "inline-block";
         setTimeout(function () {
+            profilerefresh()
             box.style.display = "none";
         }, 2000);
     } else {
@@ -85,7 +86,7 @@ function adddetails() {
     }
 
     var script = document.createElement('script');
-    var decryptedUrl = decryptURL(encryptedUrl1, password);
+    var decryptedUrl = decryptURL(encryptedUrl, password);
     script.src = decryptedUrl +
                  "?callback=handleResponse1" +
                  "&key=" + encodeURIComponent(key) +

@@ -16,9 +16,9 @@ var password = 'secret';
 
 
 function loadtable() {
-    var loadingspinner = document.getElementById("loadingspinner");
-    loadingspinner.style.display = "inline-block";
     var decryptedUrl = decryptURL(encryptedUrl1, password);
+    var dataTable = document.getElementById("dataTable");
+    dataTable.getElementsByTagName('tbody')[0].innerHTML = ''; 
     fetch(decryptedUrl)
         .then(response => response.json())
         .then(data => {
@@ -56,7 +56,6 @@ function loadtable() {
                 newRow.appendChild(actionsCell);
                 tableBody.appendChild(newRow);
             });
-            loadingspinner.style.display = "none";
         })
         .catch(error => console.error('Error fetching data:', error));
 }
@@ -96,7 +95,7 @@ function handleResponse2(response) {
         box.style.display = "inline-block";
         setTimeout(function () {
             box.style.display = "none";
-            location.reload();
+            loadtable();
         }, 2000);
     } else {
         document.getElementById('editButton').style.backgroundColor = '';
