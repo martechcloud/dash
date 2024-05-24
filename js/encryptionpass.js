@@ -13,7 +13,6 @@ fetch('Encryption Password/Encryption_Password.txt')
             const password = match[1];
             // Storing the password in session storage
             sessionStorage.setItem('pass', password);
-            console.log(password)
         } else {
             throw new Error('Password not found in the text file');
         }
