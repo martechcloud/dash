@@ -5,6 +5,7 @@ function login() {
     submitButton.disabled = true;
 
     var username = document.getElementById("email").value;
+    
 
     // Generate a random key
     var key = Math.random().toString(36).substr(2, 10);
