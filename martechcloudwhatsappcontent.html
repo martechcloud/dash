@@ -150,23 +150,23 @@
                 <div data-i18n="Misc">Content</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item  active">
+                <li class="menu-item">
                   <a href="martechcloudemailcontent.html" class="menu-link">
                     <div data-i18n="Error">Email</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="#" class="menu-link" disabled>
+                  <a href="#" class="menu-link">
                     <div data-i18n="Error">SMS</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="martechcloudwhatsappcontent.html" class="menu-link">
                     <div data-i18n="Under Maintenance">WhatsApp</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="#" class="menu-link" disabled>
+                  <a href="#" class="menu-link">
                     <div data-i18n="Error">Instagram</div>
                   </a>
                 </li>
@@ -333,7 +333,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="modalCenterTitle">Test Email Template</h5>
+                      <h5 class="modal-title" id="modalCenterTitle">Test Template Notification</h5>
                       <button
                         type="button"
                         class="btn-close"
@@ -355,12 +355,13 @@
                       </div>
                       <div class="row g-2">
                         <div class="col mb-0">
-                          <label for="emailWithTitle" class="form-label">Email ID</label>
+                          <label for="emailWithTitle" class="form-label">Phone Number</label>
                           <input
-                              type="email"
+                              type="tel"
                               id="emailWithTitle"
+                              pattern="[0-9]{12}"
                               class="form-control"
-                              placeholder="Enter Email Id"
+                              placeholder="Enter Phone Number"
                               required
                           />
                       </div>
@@ -388,7 +389,7 @@
           </div>
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Content /</span> Email</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Content /</span> WhatsApp</h4>
               <div
                 class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0"
                 role="alert"
@@ -431,7 +432,7 @@
 
           <script>
           // Array of image filenames
-          fetch('Martech Cloud/martechcloud_email_templates/martechcloud_email_templates.txt')
+          fetch('Martech Cloud/martechcloud_whatsapp_templates/martechcloud_whatsapp_templates.txt')
               .then(response => {
                   if (!response.ok) {
                       throw new Error('Network response was not ok');
@@ -450,7 +451,7 @@
                                       <div class="card-body">
                                           <h5 class="card-title">${image.split('.')[0]}</h5>
                                       </div>
-                                      <img class="img-fluid card-img-top" src="Martech Cloud/martechcloud_email_templates/${image}" alt="Card image cap" />
+                                      <img class="img-fluid card-img-top" src="Martech Cloud/martechcloud_whatsapp_templates/${image}" alt="Card image cap" />
                                       <div class="card-body" style="text-align: center;">
                                           <a href="javascript:void(0);" class="card-link" onclick="openModal('${image.split('.')[0]}')">Send Test</a>
                                       </div>
