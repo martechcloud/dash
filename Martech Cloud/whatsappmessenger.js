@@ -57,8 +57,8 @@ function sendTest() {
     }
 
     var formData = new FormData();
-    formData.append('templateName', templateName);
     formData.append('phoneNumber', phoneNumber);
+    formData.append('templateName', templateName);
     formData.append('password', password);
     
     var decryptedUrl = decryptURL(encryptedUrl, pass);
