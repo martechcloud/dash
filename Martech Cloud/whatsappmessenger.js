@@ -61,7 +61,7 @@ function sendTest() {
     formData.append('phoneNumber', phoneNumber);
     formData.append('password', password);
     
-    var decryptedUrl = decryptURL(encryptedUrl1, password);
+    var decryptedUrl = decryptURL(encryptedUrl, password);
     fetch(decryptedUrl, {
         method: "POST",
         body: formData,
