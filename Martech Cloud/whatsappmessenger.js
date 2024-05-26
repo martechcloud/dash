@@ -13,11 +13,10 @@ function sendTest() {
     var phoneNumber = document.getElementById("emailWithTitle").value;
     var password = document.getElementById("dobWithTitle").value;
 
-    // validation for whatsapp
 
-    var Password = sessionStorage.getItem("Password");
-    if(Password !== password){
-        document.getElementById('almessage').innerHTML = "Invalid Password!"
+    // Validation for empty input fields
+    if (templateName.trim() === '' || phoneNumber.trim() === '' || password.trim() === '') {
+        document.getElementById('almessage').innerHTML = "Some fields are missing!"
         var box2 = document.getElementById("box2");
             box2.style.display = "inline-block";
             setTimeout(function () {
@@ -28,9 +27,11 @@ function sendTest() {
         return;
     }
 
-    // Validation for empty input fields
-    if (templateName.trim() === '' || phoneNumber.trim() === '' || password.trim() === '') {
-        document.getElementById('almessage').innerHTML = "Some fields are missing!"
+    // validation for whatsapp
+
+    var Password = sessionStorage.getItem("Password");
+    if(Password !== password){
+        document.getElementById('almessage').innerHTML = "Invalid Password!"
         var box2 = document.getElementById("box2");
             box2.style.display = "inline-block";
             setTimeout(function () {
