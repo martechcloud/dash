@@ -52,20 +52,41 @@ async function fetchAndDisplayMessages() {
         `;
     
         const today = new Date();
-        if (timestamp.toDateString() === today.toDateString()) {
-            // Create a reply button
-            const replyButton = document.createElement('button');
-            replyButton.className = "btn btn-primary";
-            replyButton.innerText = "Reply";
-            // Add event listener to handle reply functionality
-            replyButton.addEventListener('click', () => {
-                // You can implement reply functionality here
-                alert("Reply functionality goes here for message: " + message.message);
-            });
+if (timestamp.toDateString() === today.toDateString()) {
+    // Create a reply button
+    const replyButton = document.createElement('button');
+    replyButton.className = "btn btn-primary";
+    replyButton.innerText = "Reply";
+    
+    // Create the toast notification
+    const toastHtml = `
+        <div class="bs-toast toast fade show bg-info" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Bootstrap</div>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.
+            </div>
+        </div>
+    `;
+    const toastDiv = document.createElement('div');
+    toastDiv.innerHTML = toastHtml;
 
-            // Append the reply button to the messageDiv
-            messageDiv.appendChild(replyButton);
-        }
+    // Add event listener to handle reply functionality
+    replyButton.addEventListener('click', () => {
+        // Append the toast notification to the body or a specific container
+        document.body.appendChild(toastDiv);
+
+        // Optional: Implement any additional reply functionality here
+        alert("Reply functionality goes here for message: " + message.message);
+    });
+
+    // Append the reply button to the messageDiv
+    messageDiv.appendChild(replyButton);
+}
     
         // Append the messageDiv to the messagesContainer
         messagesContainer.appendChild(messageDiv);
