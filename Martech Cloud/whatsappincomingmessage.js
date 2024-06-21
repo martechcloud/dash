@@ -57,31 +57,34 @@ if (timestamp.toDateString() === today.toDateString()) {
     const replyButton = document.createElement('button');
     replyButton.className = "btn btn-primary";
     replyButton.innerText = "Reply";
-    
-    // Create the toast notification
-    const toastHtml = `
-        <div class="bs-toast toast fade show bg-info" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <i class="bx bx-bell me-2"></i>
-                <div class="me-auto fw-semibold">Bootstrap</div>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.
-            </div>
-        </div>
-    `;
-    const toastDiv = document.createElement('div');
-    toastDiv.innerHTML = toastHtml;
 
     // Add event listener to handle reply functionality
     replyButton.addEventListener('click', () => {
-        // Append the toast notification to the body or a specific container
-        document.body.appendChild(toastDiv);
-
         // Optional: Implement any additional reply functionality here
         alert("Reply functionality goes here for message: " + message.message);
+
+        // Create the toast notification
+        const toastHtml = `
+            <div class="bs-toast toast fade bg-info" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <i class="bx bx-bell me-2"></i>
+                    <div class="me-auto fw-semibold">Bootstrap</div>
+                    <small>Just now</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.
+                </div>
+            </div>
+        `;
+        const toastDiv = document.createElement('div');
+        toastDiv.innerHTML = toastHtml;
+        document.body.appendChild(toastDiv);
+
+        // Initialize the toast
+        const toastElement = toastDiv.querySelector('.toast');
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
     });
 
     // Append the reply button to the messageDiv
