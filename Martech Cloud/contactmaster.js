@@ -6,6 +6,17 @@
 
 'use strict';
 
+
+// Function to show loader
+function showLoader() {
+    document.body.classList.add("loading");
+}
+
+// Function to hide loader
+function hideLoader() {
+    document.body.classList.remove("loading");
+}
+
 function decryptURL(encryptedUrl, password) {
     var decrypted = CryptoJS.AES.decrypt(decodeURIComponent(encryptedUrl), password).toString(CryptoJS.enc.Utf8);
     return decrypted;
