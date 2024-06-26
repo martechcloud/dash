@@ -3,8 +3,6 @@
 * File include item demo only specific css only
 ******************************************************************************/
 
-
-
 body, html {
   margin: 0;
   padding: 0;
@@ -71,8 +69,6 @@ body.loading .preloader {
 .content {
   padding: 20px;
 }
-
-
 
 
 /* Width */
