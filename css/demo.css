@@ -16,8 +16,12 @@ body.loading .content {
   filter: blur(5px);
 }
 
-.preloader {
+body.loading .preloader {
   display: flex;
+}
+
+.preloader {
+  display: none; /* Initially hide the preloader */
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -67,7 +71,6 @@ body.loading .content {
 .content {
   padding: 20px;
 }
-
 
 
 
