@@ -16,6 +16,7 @@ var password = sessionStorage.getItem("pass");
 
 
 function loadtable() {
+    document.body.classList.add("loading");
     var decryptedUrl = decryptURL(encryptedUrl1, password);
     var dataTable = document.getElementById("dataTable");
     dataTable.getElementsByTagName('tbody')[0].innerHTML = ''; 
@@ -58,6 +59,7 @@ function loadtable() {
             });
         })
         .catch(error => console.error('Error fetching data:', error));
+    document.body.classList.remove("loading");
         
 }
 
