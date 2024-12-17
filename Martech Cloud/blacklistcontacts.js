@@ -49,7 +49,6 @@ function blacklistemail() {
     })
     .catch(function (error) {
         console.error("Error:", error);
-        loadingSpinner.style.display = "none";
     });
 }
 
@@ -99,7 +98,6 @@ function blacklistphone() {
     })
     .catch(function (error) {
         console.error("Error:", error);
-        loadingSpinner.style.display = "none";
     });
 }
                 
