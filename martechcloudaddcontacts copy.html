@@ -53,7 +53,6 @@
       .header {
           width: 100%;
           background: linear-gradient(90deg, #ff7e5f, #feb47b);
-          padding: 10px 20px;
           box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
           position: fixed;
           top: 0;
@@ -75,18 +74,18 @@
       }
       .main-content {
           display: flex;
-          margin-top: 20px;
+          margin-top: 15px;
           width: 100%;
       }
       .menu-items1 {
           width: 100%;
-          padding: 10px;
+          padding: 0px;
           display: flex;
           flex-wrap: wrap;
           gap: 10px;
       }
       .menu-item1 {
-        width: 30%;
+        width: 20%;
         text-align: center;
         background-color: #ffffff;
         transition: transform 0.3s, box-shadow 0.3s;
@@ -101,8 +100,11 @@
           color: #666;
       }
       #menu-items {
-        max-height: 400px; /* Adjust the height as needed */
         overflow-y: auto;  /* Enables vertical scrolling */
+      }
+
+      #menu-items::-webkit-scrollbar {
+          display: none; /* Hides scrollbar in WebKit browsers (e.g., Chrome, Safari) */
       }
 
       .billing ul {
@@ -116,7 +118,7 @@
       .billing ul li {
           display: grid;
           grid-template-columns: 3fr 1fr 1fr 1fr;
-          padding: 12px;
+          padding: 5px;
           font-size: 14px;
           color: #444;
           border-bottom: 1px solid #ddd;
@@ -176,12 +178,8 @@
       /* General styling for the billing section */
       .billing {
           width: 70%;
-          max-width: 600px;
-          margin: 20px auto;
           background-color: #fff;
           border: 1px solid #ddd;
-          border-radius: 8px;
-          padding: 15px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
@@ -270,8 +268,12 @@
       }
     
       .card.mb-4 {
-        max-height: 500px; /* Adjust this as needed */
-        overflow-y: auto; /* Adds a scrollbar to the card */
+          overflow-y: auto; /* Enables vertical scrolling for the card */
+          scrollbar-width: none; /* Hides scrollbar in Firefox */
+      }
+
+      .card.mb-4::-webkit-scrollbar {
+          display: none; /* Hides scrollbar in Chrome, Safari, etc. */
       }
     </style>
      
@@ -984,6 +986,30 @@
           const tableNumber = document.getElementById('exampleFormControlSelect1').value;
           sessionStorage.removeItem(tableNumber)
           console.log("Session item removed!");
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuItems = document.getElementById("menu-items");
+        const deviceHeight = window.innerHeight; // Get the device height
+        menuItems.style.maxHeight = `${deviceHeight}px`; // Dynamically set the height
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Disable default page scroll
+        document.body.style.overflow = "hidden";
+
+        // Dynamically set the max-height of .card.mb-4
+        const cards = document.querySelectorAll(".card.mb-4");
+        const deviceHeight = window.innerHeight; // Get device viewport height
+        const headerHeight = 100; // Adjust based on your header or other elements
+
+        cards.forEach(card => {
+          card.style.maxHeight = `${deviceHeight - headerHeight}px`; // Dynamically set max-height
+        });
       });
     </script>
 
