@@ -245,7 +245,7 @@
       /* Subtotal section */
       .billing .total {
           text-align: right;
-          font-size: 15px;
+          font-size: 17px;
           font-weight: bold;
           color: #333;
           padding-top: 10px;
@@ -537,6 +537,63 @@
                 </div>
             </div>
           </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalCenterTitle">ADD NEW PRODUCT</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col mb-3">
+                      <label for="nameWithTitle" class="form-label">PRODUCT NAME</label>
+                      <input
+                        type="text"
+                        id="nameWithTitle"
+                        class="form-control"
+                        placeholder="Enter Name"
+                      />
+                    </div>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col mb-0">
+                      <label for="emailWithTitle" class="form-label">PRODUCT CATEGORY</label>
+                      <input
+                        type="text"
+                        id="emailWithTitle"
+                        class="form-control"
+                        placeholder="Enter Category"
+                      />
+                    </div>
+                    <div class="col mb-0">
+                      <label for="dobWithTitle" class="form-label">PRODUCT PRICE</label>
+                      <input
+                        type="number"
+                        id="dobWithTitle"
+                        class="form-control"
+                        placeholder="Enter Price"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">Add Product</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           
           <div
             class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0"
@@ -610,7 +667,7 @@
                       <button class="btn btn-success" id="next-btn">Complete Order</button>
                     </div>
                     
-                    <div class="main-content" style="display: flex; gap: 10px; align-items: center; justify-content: center; ">
+                    <div class="main-content" style="display: flex; gap: 10px; align-items: left; justify-content: left; ">
                       <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('home')">Home</button>
                       <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('beverages')">Beverages</button>
                       <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('snacks')">Snacks</button>
@@ -619,7 +676,7 @@
                       <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('home')">Home</button>
                       <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('beverages')">Beverages</button>
                       <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('snacks')">Snacks</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('cat1')">Cat 1</button>
+                      <button class="btn btn-dark" id="addmenu-btn" style="float: right;">Add Product</button>
                     </div>
                     
                     <div class="main-content">
@@ -847,6 +904,7 @@
                 showItems('home');
                 hideSpinner(); // Hide the spinner once data is loaded
                 console.log('Items are now ready for selection.');
+                checkSessionElements()
             };
         </script>
 
@@ -884,6 +942,7 @@
           const tableNumber = document.getElementById('exampleFormControlSelect1').value;
           const selectedOption = document.querySelector(`#exampleFormControlSelect1 option[value="${tableNumber}"]`);
           selectedOption.style.backgroundColor = "green";
+          selectedOption.style.color = "white";
           const billTable = document.querySelector('.billing table tbody');
           const subtotalSpan = document.getElementById('subtotal');
           let subtotal = 0;
@@ -991,6 +1050,9 @@
       document.getElementById('reset-btn').addEventListener('click', function() {
           resetBilling();
           const tableNumber = document.getElementById('exampleFormControlSelect1').value;
+          const selectedOption = document.querySelector(`#exampleFormControlSelect1 option[value="${tableNumber}"]`);
+          selectedOption.style.backgroundColor = "";
+          selectedOption.style.color = "";
           sessionStorage.removeItem(tableNumber)
           console.log("Session item removed!");
       });
@@ -1018,6 +1080,36 @@
           card.style.maxHeight = `${deviceHeight - headerHeight}px`; // Dynamically set max-height
         });
       });
+    </script>
+
+    <script>
+      document.getElementById("addmenu-btn").addEventListener("click", function () {
+        const modal = new bootstrap.Modal(document.getElementById("modalCenter"));
+        modal.show();
+      });
+    </script>
+
+    <script>
+      function checkSessionElements() {
+        // List of session elements you want to check
+        const sessionKeys = [1,2,3];
+
+        // Loop through each session key and check if it's available
+        sessionKeys.forEach(key => {
+          const value = sessionStorage.getItem(key);
+          
+          // If the item is available, log it in the console
+          if (value) {
+            const selectedOption = document.querySelector(`#exampleFormControlSelect1 option[value="${key}"]`);
+            selectedOption.style.backgroundColor = "green";
+            selectedOption.style.color = "white";
+          } else {
+            console.log(`Session item with key ${key} is not available.`);
+          }
+        });
+      }
+
+      // Call the function when the page loads
     </script>
 
     <!-- Core JS -->
