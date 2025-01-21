@@ -90,7 +90,7 @@
           gap: 10px;
       }
       .menu-item1 {
-          width: 23%;
+          width: 15%;
           text-align: center;
           background-color: #ffffff;
           border-radius: 8px;
@@ -655,12 +655,16 @@
                       />
                       <select class="form-select" style="max-width: 180px;" id="exampleFormControlSelect1" aria-label="">
                         <option selected>Select Table</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                        <option value="5">Five</option>
-                        <option value="6">Six</option> 
+                        <option value="1">Table 1</option>
+                        <option value="2">Table 2</option>
+                        <option value="3">Table 3</option>
+                        <option value="4">Table 4</option>
+                        <option value="5">Table 5</option>
+                        <option value="6">Table 6</option> 
+                        <option value="7">Table 7</option> 
+                        <option value="6">Table 8</option> 
+                        <option value="6">Table 9</option> 
+                        <option value="6">Table 10</option> 
                       </select>
                       <button class="btn btn-danger" id="reset-btn">Reset Order</button>
                       <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
@@ -772,7 +776,7 @@
                         itemDiv.onclick = () => addToCart(category, index);
                         itemDiv.innerHTML = `
                             <img class="card-img-top" src="samplefoodimage.png" alt="Card image cap" />
-                            <h5 style="text-align: center; color: #3498db;">${item.name}</h5>
+                            <h5 style="text-align: center; color: #3498db; ">${item.name}</h5>
                             <p class="card-text" style="color: #555; font-size: 1rem;">Price: ₹${item.price.toFixed(2)}</p>
                         `;
                         menuItemsDiv.appendChild(itemDiv);
@@ -1092,7 +1096,7 @@
     <script>
       function checkSessionElements() {
         // List of session elements you want to check
-        const sessionKeys = [1,2,3];
+        const sessionKeys = [1,2,3,4,5,6,7,8,9,10];
 
         // Loop through each session key and check if it's available
         sessionKeys.forEach(key => {
@@ -1103,8 +1107,6 @@
             const selectedOption = document.querySelector(`#exampleFormControlSelect1 option[value="${key}"]`);
             selectedOption.style.backgroundColor = "green";
             selectedOption.style.color = "white";
-          } else {
-            console.log(`Session item with key ${key} is not available.`);
           }
         });
       }
