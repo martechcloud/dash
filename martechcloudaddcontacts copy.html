@@ -119,20 +119,16 @@
           margin-top: 0px;
           font-size: 14px;
       }
-      #menu-items {
-        overflow-y: auto;  /* Enables vertical scrolling */
-      }
 
-      #menu-items::-webkit-scrollbar {
-          display: none; /* Hides scrollbar in WebKit browsers (e.g., Chrome, Safari) */
-      }
+
+
 
       .billing {
           width: 70%;
           background-color: #fff;
           margin: 0; /* Ensure no margin at the top */
           padding: 0; /* Reset padding to 0 */
-          overflow-y: auto;
+
       }
 
       .billing ul {
@@ -267,21 +263,31 @@
           color: #e91e63;
       }
 
+      .billing2 {
+          width: 50%;
+          background-color: #fff;
+          margin: 0; /* Center the container */
+          padding: 20px; /* Add padding for better spacing */
+          border-radius: 8px; /* Rounded corners */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+
+      }
+
       .billing2 ul {
           list-style: none;
-          padding: 10px;
-          margin: 20px;
+          padding: 0;
+          margin: 0;
           border-collapse: collapse;
-          width: 50%;
+          width: 100%;
       }
 
       .billing2 ul li {
           display: grid;
           grid-template-columns: 3fr 1fr 1fr 1fr;
-          padding: 10px;
-          font-size: 14px;
-          color: #444;
-          border-bottom: 1px solid #ddd;
+          padding: 12px 10px; /* Increased padding for better spacing */
+          font-size: 15px; /* Slightly bigger font size */
+          color: #555;
+          border-bottom: 1px solid #eee;
       }
 
       .billing2 ul li:last-child {
@@ -290,6 +296,7 @@
 
       .billing2 ul li .item-name {
           padding-left: 10px;
+          font-weight: 500;
       }
 
       .billing2 .quantity-control {
@@ -300,113 +307,70 @@
 
       .billing2 .quantity-control button {
           margin: 0 5px;
-          padding: 5px 10px;
-          background-color: grey;
+          padding: 6px 12px;
+          background-color: #007bff;
           color: #fff;
           border: none;
-          border-radius: 3px;
+          border-radius: 5px;
           cursor: pointer;
           font-size: 14px;
+          transition: background-color 0.3s;
       }
 
       .billing2 .quantity-control button:hover {
-          background-color: black;
+          background-color: #0056b3;
       }
 
       .billing2 .total {
           font-weight: bold;
-          margin-top: 20px;
-          font-size: 18px;
-          color: #000;
+          font-size: 20px;
+          color: #333;
           text-align: right;
-          padding-top: 10px;
-          border-top: 1px solid #ddd;
-          padding-right: 20px;
+          border-top: 2px solid #ddd;
+          padding: 15px 20px 10px 0;
+          margin-top: 20px; /* Add space before subtotal */
       }
 
-      /* Add gridlines between headers and items */
+      .billing2 .total span {
+          color: #e91e63;
+          font-size: 22px; /* Slightly larger text for emphasis */
+          font-weight: 600;
+      }
+
       .billing2 ul li.header {
           font-weight: bold;
-          background-color: #f1f1f1;
+          background-color: #f7f7f7;
           border-top: 2px solid #ddd;
       }
 
       .billing2 ul li.header div {
           padding: 10px;
           text-align: center;
-      }
-      /* General styling for the billing section */
-      .billing2 {
-          width: 70%;
-          background-color: #fff;
-          border: 1px solid #ddd;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          background-color: #f1f1f1;
+          border-bottom: 1px solid #ddd;
       }
 
-      /* Styling for the table */
       .billing2 table {
-          padding: 10px;
           width: 100%;
           border-collapse: collapse;
-          margin-bottom: 15px;
+          margin: 0 0 20px 0;
+          padding: 0;
       }
 
-      .billing2 th, .billing2 td {
+      .billing2 th,
+      .billing2 td {
           text-align: left;
-          padding: 8px;
+          padding: 10px;
           border-bottom: 1px solid #ddd;
       }
 
       .billing2 th {
-          background-color: black;
+          background-color: #343a40;
           color: white;
           font-weight: bold;
-          font-size: 15px;
-      }
-
-      .billing2 td {
-          color: #333;
-          font-size: 15px;
-      }
-
-      .billing2 thead tr {
-          border-bottom: 2px solid #ddd;
-      }
-
-      /* Styling for the unordered list */
-      .billing2 ul#bill-items {
-          list-style-type: none;
-          padding: 0;
-          margin: 0 0 15px;
-      }
-
-      .billing2 ul#bill-items li {
-          padding: 8px 0;
-          border-bottom: 1px solid #f1f1f1;
-          color: #666;
-          font-size: 14px;
-      }
-
-      .billing2 ul#bill-items li:last-child {
-          border-bottom: none;
-      }
-
-      /* Subtotal section */
-      .billing2 .total {
-          text-align: right;
-          font-size: 17px;
-          font-weight: bold;
-          color: #333;
-          padding-top: 10px;
-          border-top: 2px solid #ddd;
-      }
-
-      .billing2 .total span {
-          color: #e91e63;
-      }
-
-      .billing2 th {
+          font-size: 16px;
           text-align: center;
+          border-radius: 5px;
       }
 
       .billing2 th:first-child {
@@ -414,6 +378,8 @@
       }
 
       .billing2 td {
+          color: #555;
+          font-size: 16px;
           text-align: center;
       }
 
@@ -421,20 +387,29 @@
           text-align: left;
       }
 
-    </style>
-    <style>
-      body {
-        overflow: hidden; /* Removes the page scrollbar */
-      }
-    
-      .card.mb-4 {
-          scrollbar-width: none; /* Hides scrollbar in Firefox */
+      .billing2 thead tr {
+          border-bottom: 2px solid #ddd;
       }
 
-      .card.mb-4::-webkit-scrollbar {
-          display: none; /* Hides scrollbar in Chrome, Safari, etc. */
+      .billing2 ul#bill-items {
+          list-style-type: none;
+          padding: 0;
+          margin: 0 0 20px;
       }
+
+      .billing2 ul#bill-items li {
+          padding: 10px 0;
+          border-bottom: 1px solid #f1f1f1;
+          color: #666;
+          font-size: 15px;
+      }
+
+      .billing2 ul#bill-items li:last-child {
+          border-bottom: none;
+      }
+
     </style>
+
 
     
      
@@ -814,7 +789,7 @@
                           <th>QUANTITY</th>
                           <th>PRICE</th>
                           <th>TOTAL</th>
-                          <th>Complimentory</th>
+                          <th>COMPLIMENTORY</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -913,7 +888,7 @@
                       <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('beverages')">Beverages</button>
                       <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('snacks')">Snacks</button>
                       &nbsp;
-                      <nav aria-label="Page navigation" style="display: flex; justify-content: center; overflow-x: auto;">
+                      <nav aria-label="Page navigation" style="display: flex; justify-content: center; ">
                         <ul class="pagination" style="display: flex; gap: 5px; flex-wrap: wrap;">
                           <li class="page-item">
                             <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">1</a>
@@ -958,18 +933,18 @@
                     <div class="main-content">
                       <div class="menu-items1" id="menu-items"></div>
           
-                      <div class="billing" id="billing" style="max-height: 500px; overflow-y: auto; position: relative;">
-                        <div class="button-container" style="margin-bottom: 20px; ">
-                            <button class="btn btn-danger" id="reset-btn">Reset Order</button>
-                            <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
-                            <button class="btn btn-success" id="completeorder-btn" data-bs-toggle="modal" data-bs-target="#fullscreenModal">Complete Order</button>
-                        </div>
+                      <div class="billing" id="billing" style="max-height: 500px;  position: relative;">
+                        <div class="button-container" style="margin-bottom: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+                          <button class="btn btn-danger" id="reset-btn">Reset Order</button>
+                          <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
+                          <button class="btn btn-success" id="completeorder-btn" data-bs-toggle="modal" data-bs-target="#fullscreenModal">Complete Order</button>
+                      </div>
                     
-                        <div class="table-container" style=" overflow-y: auto; position: relative;">
+                        <div class="table-container" style="  position: relative;">
                             <table style="width: 100%; border-collapse: collapse;">
                               <thead style="position: sticky; top: 0; background-color: #fff; z-index: 1; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
                                     <tr>
-                                        <th>ITEM NAME</th>
+                                        <th>ITEM NAME </th>
                                         <th>QUANTITY</th>
                                         <th>PRICE</th>
                                         <th>TOTAL</th>
