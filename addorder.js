@@ -79,7 +79,7 @@ async function showItems(category) {
     }
 
     // Add 10 empty boxes at the end
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
         const emptyBox = document.createElement('div');
         emptyBox.className = 'menu-item1';
         emptyBox.style.border = '1px dashed #ddd'; // Optional: dashed border for empty boxes
