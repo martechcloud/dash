@@ -542,6 +542,7 @@ document.getElementById("modal-addproduct").addEventListener("click", async () =
 
 //Delete Product
 
+
 document.getElementById("deletemenu-btn").addEventListener("click", function () {
     const modal = new bootstrap.Modal(document.getElementById("modalCenterdeletemenu"));
     modal.show();
@@ -633,20 +634,6 @@ document.getElementById("modal-deleteproduct").addEventListener("click", async (
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Needs to remove
-
-document.addEventListener("DOMContentLoaded", function () {
-    const menuItems = document.getElementById("menu-items");
-    const billingTable = document.getElementById("billing"); // Get the billing table section
-    
-    const deviceHeight = window.innerHeight; // Get the device height
-    const deviceHeightfinal = deviceHeight - 200; // Subtract 200px (for other content like header/footer)
-    
-    // Set height for the menu items section
-    menuItems.style.maxHeight = `${deviceHeightfinal}px`;
-
-    // Set height for the billing section
-    billingTable.style.maxHeight = `${deviceHeightfinal}px`; 
-});
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
