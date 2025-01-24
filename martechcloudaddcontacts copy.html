@@ -79,12 +79,21 @@
       }
       .main-content {
           display: flex;
+          margin-top: 0px;
+          width: 100%;
+          
+      }
+
+      .main-content1 {
+          display: flex;
           margin-top: 20px;
           width: 100%;
+          height: 50px;
+          
       }
       .menu-items1 {
           width: 100%;
-          padding: 10px;
+          padding: 0px;
           display: flex;
           flex-wrap: wrap;
           gap: 10px;
@@ -107,7 +116,7 @@
 
       .menu-item1 p {
           color: #555;
-          margin-top: 10px;
+          margin-top: 0px;
           font-size: 14px;
       }
       #menu-items {
@@ -118,10 +127,18 @@
           display: none; /* Hides scrollbar in WebKit browsers (e.g., Chrome, Safari) */
       }
 
+      .billing {
+          width: 70%;
+          background-color: #fff;
+          margin: 0; /* Ensure no margin at the top */
+          padding: 0; /* Reset padding to 0 */
+          overflow-y: auto;
+      }
+
       .billing ul {
           list-style: none;
-          padding: 10px;
-          margin: 10px;
+          padding: 0; /* Ensure no padding */
+          margin: 0; /* Ensure no margin */
           border-collapse: collapse;
           width: 100%;
       }
@@ -166,16 +183,15 @@
 
       .billing .total {
           font-weight: bold;
-          margin-top: 20px;
           font-size: 18px;
           color: #000;
           text-align: right;
-          padding-top: 10px;
           border-top: 1px solid #ddd;
-          padding-right: 20px;
+          padding: 10px 20px 0 0;
+          margin: 0; /* Ensure no extra margin at the top */
       }
 
-      /* Add gridlines between headers and items */
+      /* Gridlines for header and items */
       .billing ul li.header {
           font-weight: bold;
           background-color: #f1f1f1;
@@ -186,23 +202,17 @@
           padding: 10px;
           text-align: center;
       }
-      /* General styling for the billing section */
-      .billing {
-          width: 70%;
-          background-color: #fff;
-          border: 1px solid #ddd;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
 
-      /* Styling for the table */
+      /* Table styling */
       .billing table {
-          padding: 10px;
           width: 100%;
           border-collapse: collapse;
-          margin-bottom: 15px;
+          margin: 0 0 15px 0; /* Reset margin at the top */
+          padding: 0; /* Reset padding */
       }
 
-      .billing th, .billing td {
+      .billing th,
+      .billing td {
           text-align: left;
           padding: 8px;
           border-bottom: 1px solid #ddd;
@@ -213,22 +223,32 @@
           color: white;
           font-weight: bold;
           font-size: 15px;
+          text-align: center;
+      }
+
+      .billing th:first-child {
+          text-align: left;
       }
 
       .billing td {
           color: #333;
           font-size: 15px;
+          text-align: center;
+      }
+
+      .billing td:first-child {
+          text-align: left;
       }
 
       .billing thead tr {
           border-bottom: 2px solid #ddd;
       }
 
-      /* Styling for the unordered list */
+      /* Unordered list styling */
       .billing ul#bill-items {
           list-style-type: none;
-          padding: 0;
-          margin: 0 0 15px;
+          padding: 0; /* Ensure no padding */
+          margin: 0 0 15px; /* Reset margin at the top */
       }
 
       .billing ul#bill-items li {
@@ -242,8 +262,137 @@
           border-bottom: none;
       }
 
+      /* Subtotal styling */
+      .billing .total span {
+          color: #e91e63;
+      }
+
+      .billing2 ul {
+          list-style: none;
+          padding: 10px;
+          margin: 20px;
+          border-collapse: collapse;
+          width: 50%;
+      }
+
+      .billing2 ul li {
+          display: grid;
+          grid-template-columns: 3fr 1fr 1fr 1fr;
+          padding: 10px;
+          font-size: 14px;
+          color: #444;
+          border-bottom: 1px solid #ddd;
+      }
+
+      .billing2 ul li:last-child {
+          border-bottom: none;
+      }
+
+      .billing2 ul li .item-name {
+          padding-left: 10px;
+      }
+
+      .billing2 .quantity-control {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .billing2 .quantity-control button {
+          margin: 0 5px;
+          padding: 5px 10px;
+          background-color: grey;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+          font-size: 14px;
+      }
+
+      .billing2 .quantity-control button:hover {
+          background-color: black;
+      }
+
+      .billing2 .total {
+          font-weight: bold;
+          margin-top: 20px;
+          font-size: 18px;
+          color: #000;
+          text-align: right;
+          padding-top: 10px;
+          border-top: 1px solid #ddd;
+          padding-right: 20px;
+      }
+
+      /* Add gridlines between headers and items */
+      .billing2 ul li.header {
+          font-weight: bold;
+          background-color: #f1f1f1;
+          border-top: 2px solid #ddd;
+      }
+
+      .billing2 ul li.header div {
+          padding: 10px;
+          text-align: center;
+      }
+      /* General styling for the billing section */
+      .billing2 {
+          width: 70%;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Styling for the table */
+      .billing2 table {
+          padding: 10px;
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 15px;
+      }
+
+      .billing2 th, .billing2 td {
+          text-align: left;
+          padding: 8px;
+          border-bottom: 1px solid #ddd;
+      }
+
+      .billing2 th {
+          background-color: black;
+          color: white;
+          font-weight: bold;
+          font-size: 15px;
+      }
+
+      .billing2 td {
+          color: #333;
+          font-size: 15px;
+      }
+
+      .billing2 thead tr {
+          border-bottom: 2px solid #ddd;
+      }
+
+      /* Styling for the unordered list */
+      .billing2 ul#bill-items {
+          list-style-type: none;
+          padding: 0;
+          margin: 0 0 15px;
+      }
+
+      .billing2 ul#bill-items li {
+          padding: 8px 0;
+          border-bottom: 1px solid #f1f1f1;
+          color: #666;
+          font-size: 14px;
+      }
+
+      .billing2 ul#bill-items li:last-child {
+          border-bottom: none;
+      }
+
       /* Subtotal section */
-      .billing .total {
+      .billing2 .total {
           text-align: right;
           font-size: 17px;
           font-weight: bold;
@@ -252,26 +401,25 @@
           border-top: 2px solid #ddd;
       }
 
-      .billing .total span {
+      .billing2 .total span {
           color: #e91e63;
       }
 
-      .billing th {
+      .billing2 th {
           text-align: center;
       }
 
-      .billing th:first-child {
+      .billing2 th:first-child {
           text-align: left;
       }
 
-      .billing td {
+      .billing2 td {
           text-align: center;
       }
 
-      .billing td:first-child {
+      .billing2 td:first-child {
           text-align: left;
       }
-
 
     </style>
     <style>
@@ -280,7 +428,6 @@
       }
     
       .card.mb-4 {
-          overflow-y: auto; /* Enables vertical scrolling for the card */
           scrollbar-width: none; /* Hides scrollbar in Firefox */
       }
 
@@ -288,6 +435,8 @@
           display: none; /* Hides scrollbar in Chrome, Safari, etc. */
       }
     </style>
+
+    
      
 
     <!-- Helpers -->
@@ -630,6 +779,65 @@
             </div>
           </div>
 
+          <!-- Modal -->
+          <div class="modal fade" id="fullscreenModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <select class="form-select" id="discountdropdown" aria-label="">
+                    <option selected>Add Discount</option>
+                    <option value="10">10%</option>
+                    <option value="20">20%</option>
+                    <option value="30">30%</option>
+                    <option value="40">40%</option>
+                    <option value="55">50%</option>
+                    <option value="60">60%</option> 
+                    <option value="70">70%</option>
+                    <option value="80">80%</option> 
+                    <option value="90">90%</option> 
+                    <option value="100">100%</option>  
+                  </select>
+                  &nbsp;
+                  <div class="billing2" id="billing">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>ITEM NAME</th>
+                          <th>QUANTITY</th>
+                          <th>PRICE</th>
+                          <th>TOTAL</th>
+                          <th>Complimentory</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Dynamic rows will be appended here -->
+                      </tbody>
+                    </table>
+                    <ul id="bill-items">
+                    </ul>
+                    <div class="total">
+                      SUBTOTAL: ₹<span id="subtotal2">0.00</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           
           <div
             class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0"
@@ -689,62 +897,107 @@
                         placeholder="Search for items..."
                         oninput="searchItems()"
                       />
-                      <select class="form-select" style="max-width: 180px;" id="exampleFormControlSelect1" aria-label="">
-                        <option selected>Select Table</option>
-                        <option value="1">Table 1</option>
-                        <option value="2">Table 2</option>
-                        <option value="3">Table 3</option>
-                        <option value="4">Table 4</option>
-                        <option value="5">Table 5</option>
-                        <option value="6">Table 6</option> 
-                        <option value="7">Table 7</option> 
-                        <option value="6">Table 8</option> 
-                        <option value="6">Table 9</option> 
-                        <option value="6">Table 10</option> 
-                      </select>
                       <button class="btn btn-primary" id="refreshmenu-btn" style="float: right;">Refresh Products</button>
                       <button class="btn btn-danger" id="deletemenu-btn">Delete Product</button>
                       <button class="btn btn-dark" id="addmenu-btn" style="float: right;">Add Product</button>
+                      
                     </div>
                     
-                    <div class="main-content" style="display: flex; gap: 10px; align-items: left; justify-content: left; ">
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('home')">Home</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('beverages')">Beverages</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('snacks')">Snacks</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('cat1')">Cat 1</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('cat2')">Cat 2</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('home')">Home</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('beverages')">Beverages</button>
-                      <button class="btn btn-outline-dark" id="next-btn" onclick="showItems('snacks')">Snacks</button>
+                    <div class="main-content1" style="display: flex; gap: 10px; align-items: left; justify-content: left; ">
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;" onclick="showItems('home')">Home</button>
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('beverages')">Beverages</button>
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('snacks')">Snacks</button>
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('cat1')">Cat 1</button>
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('cat2')">Cat 2</button>
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('home')">Home</button>
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('beverages')">Beverages</button>
+                      <button class="btn btn-outline-dark" id="next-btn" style="height: 35px; text-align: center; font-size: 14px;"onclick="showItems('snacks')">Snacks</button>
                       &nbsp;
-                      <button class="btn btn-danger" id="reset-btn">Reset Order</button>
-                      <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
-                      <button class="btn btn-success" id="next-btn">Complete Order</button>
+                      <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">1</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">2</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">3</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">4</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">5</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">6</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">7</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">8</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">9</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">10</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">11</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">12</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">13</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">14</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">15</a>
+                          </li>
+                        </ul>
+                      </nav>
                     </div>
                     
                     <div class="main-content">
                       <div class="menu-items1" id="menu-items"></div>
           
-                      <div class="billing" id="billing">
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>ITEM NAME</th>
-                              <th>QUANTITY</th>
-                              <th>PRICE</th>
-                              <th>TOTAL</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <!-- Dynamic rows will be appended here -->
-                          </tbody>
-                        </table>
+                      <div class="billing" id="billing" style="max-height: 500px; overflow-y: auto; position: relative;">
+                        <div class="button-container" style="margin-bottom: 20px;">
+                            <button class="btn btn-danger" id="reset-btn">Reset Order</button>
+                            <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
+                            <button class="btn btn-success" id="completeorder-btn" data-bs-toggle="modal" data-bs-target="#fullscreenModal">Complete Order</button>
+                        </div>
+                    
+                        <div class="table-container" style="max-height: 400px; overflow-y: auto; position: relative;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                              <thead style="position: sticky; top: 0; background-color: #fff; z-index: 1; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                                    <tr>
+                                        <th>ITEM NAME</th>
+                                        <th>QUANTITY</th>
+                                        <th>PRICE</th>
+                                        <th>TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dynamic rows will be appended here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    
                         <ul id="bill-items">
                         </ul>
-                        <div class="total">
-                          SUBTOTAL: ₹<span id="subtotal">0.00</span>
+                    
+                        <!-- Fixed subtotal line at the bottom -->
+                        <div class="total" style="position: absolute; bottom: 0; width: 100%; background-color: #fff; padding: 10px; border-top: 1px solid #ccc;">
+                            SUBTOTAL: ₹<span id="subtotal">0.00</span>
                         </div>
-                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -755,637 +1008,49 @@
           </div></div>
 
 
-          <script>
-            // Global variables
-            let items = {};  // Store items dynamically fetched from the API
-            let cart = {};   // Store items added to the cart
-        
-            // Spinner display function
-            function showSpinner() {
-                document.getElementById('spinner').style.display = 'block';
-            }
-        
-            // Hide spinner
-            function hideSpinner() {
-                document.getElementById('spinner').style.display = 'none';
-            }
-        
-            // Fetch data from the Apps Script URL only once
-            async function fetchData() {
-                try {
-                    const response = await fetch('https://script.google.com/macros/s/AKfycbzXWL8oN0knVFt2ZV5w6CVSPvZ2iHtToxhQgqova7AobgeP6qEhp50R8lwVNLEndxSp/exec?sheetName=PRODUCT_DATA_TABLE');
-                    const data = await response.json();
-                    return data;
-                } catch (error) {
-                    console.error("Error fetching data: ", error);
-                }
-            }
-        
-            // Organize data into categories dynamically (called only once on page load)
-            async function organizeItems() {
-                const data = await fetchData();
-                items = {};  // Reset items
-                data.data.slice(1).forEach(row => { // Skip the header row
-                    const [productId, productName, productCategory, productPrice] = row;
-                    // Check if the category exists, if not create it
-                    if (!items[productCategory.toLowerCase()]) {
-                        items[productCategory.toLowerCase()] = [];
-                    }
-                    // Push the item to its respective category
-                    items[productCategory.toLowerCase()].push({
-                        name: productName.trim(),
-                        price: parseFloat(productPrice)
-                    });
-                });
-            }
-        
-            // Display items dynamically from the loaded data
-            async function showItems(category) {
-                if (Object.keys(items).length === 0) {
-                    await organizeItems(); // Ensure items are loaded before displaying
-                }
-                
-                const menuItemsDiv = document.getElementById('menu-items');
-                menuItemsDiv.innerHTML = '';
-                
-                if (items[category]) {
-                    items[category].forEach((item, index) => {
-                        const itemDiv = document.createElement('div');
-                        itemDiv.className = 'menu-item1';
-                        itemDiv.onclick = () => addToCart(category, index);
-                        itemDiv.innerHTML = `
-                            <img class="card-img-top" src="samplefoodimage.png" alt="Card image cap" />
-                            <h5 style="text-align: center; color: #3498db; ">${item.name}</h5>
-                            <p class="card-text" style="color: #555; font-size: 1rem;">Price: ₹${item.price.toFixed(2)}</p>
-                        `;
-                        menuItemsDiv.appendChild(itemDiv);
-                    });
-                } else {
-                    menuItemsDiv.innerHTML = `<p>No items available for this category.</p>`;
-                }
-            }
-        
-            // Search items based on the user's input
-            async function searchItems() {
-                const query = document.getElementById('search-bar').value.toLowerCase();
-                const menuItemsDiv = document.getElementById('menu-items');
-                menuItemsDiv.innerHTML = '';
-        
-                if (Object.keys(items).length === 0) {
-                    await organizeItems(); // Ensure items are loaded before searching
-                }
-        
-                let foundItems = false;
-        
-                for (const category in items) {
-                    items[category].forEach((item, index) => {
-                        if (item.name.toLowerCase().includes(query)) {
-                            const itemDiv = document.createElement('div');
-                            itemDiv.className = 'menu-item1';
-                            itemDiv.onclick = () => addToCart(category, index);
-                            itemDiv.innerHTML = `
-                                <img class="card-img-top" src="samplefoodimage.png" alt="Card image cap" />
-                                <h5 style="text-align: center; color: #3498db;">${item.name}</h5>
-                                <p class="card-text">Price: ₹${item.price.toFixed(2)}</p>
-                            `;
-                            menuItemsDiv.appendChild(itemDiv);
-                            foundItems = true;
-                        }
-                    });
-                }
-        
-                if (!foundItems) {
-                    menuItemsDiv.innerHTML = '<p>No items found.</p>';
-                }
-            }
-        
-            // Add item to the cart
-            function addToCart(category, index) {
-                const tableNumber = document.getElementById('exampleFormControlSelect1').value;
-                const errorMessage = document.getElementById('box2');
-                const alertMessage = document.getElementById('almessage');
-                if (tableNumber === "Select Table" || tableNumber === "") {
-                  alertMessage.textContent = "Please select a table before proceeding!";
-                  errorMessage.style.display = "block"; // Show error message
-                  setTimeout(() => {
-                    errorMessage.style.display = "none";
-                  }, 3000);
-                } else {
-                  const item = items[category][index];
-                  console.log(category)
-                  
-                  // Check if the item is already in the cart
-                  if (!cart[item.name]) {
-                      cart[item.name] = { ...item, quantity: 1 }; // Add item with quantity 1
-                  } else {
-                      cart[item.name].quantity++; // Increase quantity if already in cart
-                  }
-          
-                  updateBilling(); // Call function to update the billing details
-              }
-            }
-                
-        
-            // Update billing details
-            function updateBilling() {
-                const billTable = document.querySelector('.billing table tbody');
-                const subtotalSpan = document.getElementById('subtotal');
-                let subtotal = 0;
-        
-                // Clear existing table rows
-                billTable.innerHTML = '';
-        
-                // Populate table rows based on cart items
-                Object.values(cart).forEach(item => {
-                    subtotal += item.price * item.quantity;
-        
-                    // Create a table row
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${item.name}</td>
-                        <td>
-                            <div class="quantity-control">
-                                <button onclick="changeQuantity('${item.name}', -1)">-</button>
-                                ${item.quantity}
-                                <button onclick="changeQuantity('${item.name}', 1)">+</button>
-                            </div>
-                        </td>
-                        <td>₹${item.price.toFixed(2)}</td>
-                        <td>₹${(item.price * item.quantity).toFixed(2)}</td>
-                    `;
-                    billTable.appendChild(row);
-                });
-        
-                // Handle empty cart
-                if (!subtotal) {
-                    const emptyRow = document.createElement('tr');
-                    emptyRow.innerHTML = `
-                        <td colspan="4" style="text-align: center;">No items selected</td>
-                    `;
-                    billTable.appendChild(emptyRow);
-                }
-        
-                // Update subtotal
-                subtotalSpan.textContent = subtotal.toFixed(2);
-            }
-        
-            // Change item quantity in the cart
-            function changeQuantity(itemName, delta) {
-                if (cart[itemName]) {
-                    cart[itemName].quantity += delta;
-                    if (cart[itemName].quantity <= 0) {
-                        delete cart[itemName];
-                    }
-                }
-                updateBilling();
-            }
-        
-            // Fetch the items on page load to ensure they're available for use in selections
-            window.onload = async function() {
-                showSpinner(); // Show spinner while data is loading
-                await organizeItems(); // Fetch and organize items only once
-                showItems('home');
-                hideSpinner(); // Hide the spinner once data is loaded
-                console.log('Items are now ready for selection.');
-                checkSessionElements()
-            };
-        </script>
 
     <script>
-      function incomingmessage() {
-        fetchAndDisplayMessages();
-      }
-    </script>
+      document.getElementById('discountdropdown').addEventListener('change', function () {
+        // Get the selected value from the dropdown
+        const selectedValue = this.value; // `this` refers to the dropdown element
 
-    <script>
-      document.getElementById('refreshMessages').addEventListener('click', function() {
-            fetchAndDisplayMessages();
-        });
-    </script> 
+        if (selectedValue !== "Add Discount") {
+          // Convert the value to a percentage (selectedValue is already the percentage)
+          const discountPercentage = parseInt(selectedValue); // No need for *10
 
-    <script>
-      document.getElementById('draft-btn').addEventListener('click', function() {
-        // Get the select element
-        const selectElement = document.getElementById('exampleFormControlSelect1');
-        const errorMessage = document.getElementById('box2');
-        const successMessage = document.getElementById('box');
-        const alertMessage = document.getElementById('almessage');
-        
-        
-        // Check if the selected value is the default
-        if (selectElement.value === "Select Table" || selectElement.value === "") {
-          alertMessage.textContent = "Please select a table before proceeding!";
-          errorMessage.style.display = "block"; // Show error message
-          setTimeout(() => {
-            errorMessage.style.display = "none";
-          }, 3000);
+          // Calculate the discount
+          const discount = (subtotal2.textContent * discountPercentage) / 100;
+          console.log(subtotal2.textContent)
+          console.log(discountPercentage)
+
+          // Calculate the discounted price
+          const discountPrice = subtotal2.textContent - discount;
+
+          // Log the discounted price for debugging
+          const subtotalSpan2 = document.getElementById('subtotal2');
+          subtotalSpan2.textContent = discountPrice.toFixed(2);
         } else {
-          errorMessage.style.display = "none"; // Hide error message
-          // Proceed with your logic
-          const tableNumber = document.getElementById('exampleFormControlSelect1').value;
-          const selectedOption = document.querySelector(`#exampleFormControlSelect1 option[value="${tableNumber}"]`);
-          selectedOption.style.backgroundColor = "green";
-          selectedOption.style.color = "white";
-          const billTable = document.querySelector('.billing table tbody');
-          const subtotalSpan = document.getElementById('subtotal');
-          let subtotal = 0;
-
-          // Prepare the data for storage
-          const billingData = {
-              items: [],
-              subtotal: subtotalSpan.textContent
-          };
-
-          // Loop through the cart items and gather data
-          Object.values(cart).forEach(item => {
-              subtotal += item.price * item.quantity;
-
-              // Add each item to the billing data
-              billingData.items.push({
-                  name: item.name,
-                  quantity: item.quantity,
-                  price: item.price,
-                  total: (item.price * item.quantity).toFixed(2)
-              });
-          });
-
-          // Store the data in sessionStorage using the table number as the key
-          sessionStorage.setItem(tableNumber, JSON.stringify(billingData));
-          console.log(sessionStorage.getItem(tableNumber))
-          console.log(tableNumber)
-          success.textContent = "Order Saved as Draft!";
-          successMessage.style.display = "block";
-          setTimeout(() => {
-            successMessage.style.display = "none";
-          }, 3000);
+          if (selectedValue === "Add Discount") {
+          const subtotalSpan2 = document.getElementById('subtotal2');
+          subtotalSpan2.textContent = subtotal.textContent;
+          }
         }
       });
     </script>
 
     <script>
-      function resetBilling() {
-          // Get the table body element for billing
-          const billTable = document.querySelector('.billing table tbody');
-          // Get the subtotal element
-          const subtotalSpan = document.getElementById('subtotal');
-
-          // Check if the table body exists and if it has rows
-          if (billTable) {
-              // Loop through each row and remove its <td> elements
-              const rows = billTable.querySelectorAll('tr');
-              rows.forEach(row => {
-                  const cells = row.querySelectorAll('td');
-                  cells.forEach(cell => {
-                      row.removeChild(cell); // Remove each <td> element
-                  });
-              });
-          }
-          cart = {};
-
-          // Reset the subtotal text to '0.00'
-          if (subtotalSpan) {
-              subtotalSpan.textContent = '0.00'; // Set the subtotal text to '0.00'
-          }
-      }
-    </script>
-
-    <script>
-      // Listen for table selection change
-      document.getElementById('exampleFormControlSelect1').addEventListener('change', function() {
-          const tableNumber = this.value;
-
-          // Fetch the data from sessionStorage
-          const tableData = sessionStorage.getItem(tableNumber);
-          console.log(tableData)
-          if (tableData) {
-              resetBilling();
-              showItems('home');
-              const billingData = JSON.parse(tableData);
-
-              billingData.items.forEach((item) => {
-
-                  // Search for the item in the #menu-items container
-                  const menuItemsContainer = document.getElementById('menu-items');
-                  const menuItemsList = Array.from(menuItemsContainer.querySelectorAll('.menu-item1')); // Dynamically created items
-                  const itemIndex = menuItemsList.findIndex(menuItem => {
-                    // Compare the text inside the <h5> tag to match the item name
-                    return menuItem.querySelector('h5').textContent.trim() === item.name;
-                  });
-
-                  if (itemIndex !== -1) {
-                    // If item is found, run addToCart with 'home' category for the quantity of the item
-                    for (let i = 0; i < item.quantity; i++) {
-                        addToCart('home', itemIndex); // Add the item to the cart as many times as the quantity
-                    }
-
-                  } else {
-                      console.warn(`Item "${item.name}" not found in menu-items.`);
-                  }
-              });
-
-          } else {
-            resetBilling();
-          }
-      });
-    </script>
-
-    <script>
-      document.getElementById('reset-btn').addEventListener('click', function() {
-          resetBilling();
-          const tableNumber = document.getElementById('exampleFormControlSelect1').value;
-          const selectedOption = document.querySelector(`#exampleFormControlSelect1 option[value="${tableNumber}"]`);
-          selectedOption.style.backgroundColor = "";
-          selectedOption.style.color = "";
-          sessionStorage.removeItem(tableNumber)
-          console.log("Session item removed!");
-      });
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const menuItems = document.getElementById("menu-items");
-        const deviceHeight = window.innerHeight; // Get the device height
-        menuItems.style.maxHeight = `${deviceHeight}px`; // Dynamically set the height
-      });
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Disable default page scroll
-        document.body.style.overflow = "hidden";
-
-        // Dynamically set the max-height of .card.mb-4
-        const cards = document.querySelectorAll(".card.mb-4");
-        const deviceHeight = window.innerHeight; // Get device viewport height
-        const headerHeight = 100; // Adjust based on your header or other elements
-
-        cards.forEach(card => {
-          card.style.maxHeight = `${deviceHeight - headerHeight}px`; // Dynamically set max-height
-        });
-      });
-    </script>
-
-    <script>
-      document.getElementById("addmenu-btn").addEventListener("click", function () {
-        const modal = new bootstrap.Modal(document.getElementById("modalCenter"));
-        modal.show();
-      });
-    </script>
-
-    <script>
-      document.getElementById("deletemenu-btn").addEventListener("click", function () {
-        const modal = new bootstrap.Modal(document.getElementById("modalCenterdeletemenu"));
-        modal.show();
-      });
-    </script>
-
-    <script>
-      function checkSessionElements() {
-        // List of session elements you want to check
-        const sessionKeys = [1,2,3,4,5,6,7,8,9,10];
-
-        // Loop through each session key and check if it's available
-        sessionKeys.forEach(key => {
-          const value = sessionStorage.getItem(key);
-          
-          // If the item is available, log it in the console
-          if (value) {
-            const selectedOption = document.querySelector(`#exampleFormControlSelect1 option[value="${key}"]`);
-            selectedOption.style.backgroundColor = "green";
-            selectedOption.style.color = "white";
-          }
-        });
-      }
-
-      // Call the function when the page loads
-    </script>
-
-    <script>
-      document.getElementById("modal-addproduct").addEventListener("click", async () => {
-        const submitButton = document.getElementById('modal-addproduct');
-        const errorMessage = document.getElementById('box2');
-        const successMessage = document.getElementById('box');
-        const alertMessagered = document.getElementById('almessage');
-        const alertMessagegreen = document.getElementById('success');
-
-        // Get input values
-        const productName = document.getElementById("nameWithTitle").value.trim();
-        const productCategory = document.getElementById("emailWithTitle").value.trim();
-        const productPrice = document.getElementById("dobWithTitle").value.trim();
-
-        // Validate inputs
-        if (!productName || !productCategory || !productPrice) {
-          alertMessagered.textContent = "Please fill all fields before adding the product!";
-          showError(errorMessage, submitButton);
-          return;
-        }
-
-        if (isNaN(productPrice) || Number(productPrice) <= 0) {
-          alertMessagered.textContent = "Please enter a valid price!";
-          showError(errorMessage, submitButton);
-          return;
-        }
-
-        // Disable the submit button while processing
-        disableButton(submitButton);
-
-        // Construct the URL
-        const url = new URL("https://script.google.com/macros/s/AKfycbzkgR57couUXfhmao-0GP4khq5WVVDza3m3bnki9izyBV-vErRBkRg0fPfuDcBUA4ulUQ/exec");
-        url.searchParams.append("usecase", "addnewproduct");
-        url.searchParams.append("productName", productName);
-        url.searchParams.append("productCategory", productCategory);
-        url.searchParams.append("productPrice", productPrice);
-
-        try {
-          // Make the API call
-          const response = await fetch(url);
-          const data = await response.json();
-          handleResponse1(data, submitButton);
-        } catch (error) {
-          alertMessagered.textContent = "An unexpected error occurred. Please try again.";
-          showError(errorMessage, submitButton);
-        }
-      });
-
-      // Function to handle the server response
-      function handleResponse1(response, submitButton) {
-        const successMessage = document.getElementById('box');
-        const alertMessagegreen = document.getElementById('success');
-        const alertMessagered = document.getElementById('almessage');
-        const errorMessage = document.getElementById('box2');
-
-        if (response.status === "success") {
-          alertMessagegreen.textContent = "Product added to menu successfully!";
-          successMessage.style.display = "block";
-          setTimeout(() => {
-            successMessage.style.display = "none";
-          }, 3000);
-
-          // Clear input fields
-          document.getElementById("nameWithTitle").value = "";
-          document.getElementById("emailWithTitle").value = "";
-          document.getElementById("dobWithTitle").value = "";
+      function toggleComplimentary(itemName, itemPrice) {
+        const checkbox = document.getElementById(`complimentary-${itemName}`);
+        if (checkbox.checked) {
+          console.log(`${itemName} is marked as complimentary. Price: ₹${itemPrice.toFixed(2)}`);
+          // Additional logic for complimentary items can be added here
         } else {
-          alertMessagered.textContent = response.message || "Failed to add product. Please try again.";
-          showError(errorMessage, submitButton);
-        }
-
-        // Enable the submit button
-        enableButton(submitButton);
-      }
-
-      // Function to disable the submit button
-      function disableButton(button) {
-        button.style.backgroundColor = 'lightgrey';
-        button.style.border = 'lightgrey';
-        button.disabled = true;
-      }
-
-      // Function to enable the submit button
-      function enableButton(button) {
-        button.style.backgroundColor = '';
-        button.style.border = '';
-        button.disabled = false;
-      }
-
-      // Function to show error message and re-enable the button
-      function showError(errorMessage, button) {
-        errorMessage.style.display = "block";
-        setTimeout(() => {
-          errorMessage.style.display = "none";
-        }, 3000);
-        enableButton(button);
-      }
-    </script>
-
-
-
-
-    <script>
-      document.getElementById("refreshmenu-btn").addEventListener("click", async () => {
-      const submitButton = document.getElementById('refreshmenu-btn')
-      submitButton.style.backgroundColor = 'lightgrey';
-      submitButton.style.border = 'lightgrey';
-      submitButton.disabled = true;
-      const errorMessage = document.getElementById('box2');
-      const successMessage = document.getElementById('box');
-      const alertMessagered = document.getElementById('almessage');
-      const alertMessagegreen = document.getElementById('success');
-      try {
-
-        // Fetch and organize items only once
-        await organizeItems(); 
-
-        // Display the items on the page (assuming 'home' is a valid category or section)
-        showItems('home');
-
-        // Check session elements (assuming the function checks session state or similar)
-        checkSessionElements();
-        alertMessagegreen.textContent = "Product Refreshed!";
-          successMessage.style.display = "block";
-          setTimeout(() => {
-            successMessage.style.display = "none";
-          }, 3000);
-        submitButton.style.backgroundColor = '';
-        submitButton.style.border = '';
-        submitButton.disabled = false;
-      } catch (error) {
-        alertMessagered.textContent = "Failed!";
-                  errorMessage.style.display = "block"; // Show error message
-                  setTimeout(() => {
-                    errorMessage.style.display = "none";
-                  }, 3000);
-        submitButton.style.backgroundColor = '';
-        submitButton.style.border = '';
-        submitButton.disabled = false;
-      }
-    });
-    </script>
-
-    <script>
-      document.getElementById("modal-deleteproduct").addEventListener("click", async () => {
-        const submitButton = document.getElementById("modal-deleteproduct");
-        const errorMessage = document.getElementById("box2");
-        const successMessage = document.getElementById("box");
-        const alertMessagered = document.getElementById("almessage");
-        const alertMessagegreen = document.getElementById("success");
-
-        const productName = document.getElementById("nameWithTitleproductname").value.trim();
-
-        // Disable the submit button and provide visual feedback
-        disableButton(submitButton);
-
-        // Validate product name
-        if (!productName) {
-          alertMessagered.textContent = "Please add a product name!";
-          showError(errorMessage, submitButton);
-          return;
-        }
-
-        // Construct the URL for the Apps Script web app (replace with your actual web app URL)
-        const url = new URL("https://script.google.com/macros/s/AKfycbzkgR57couUXfhmao-0GP4khq5WVVDza3m3bnki9izyBV-vErRBkRg0fPfuDcBUA4ulUQ/exec");
-        url.searchParams.append("productName", productName);
-        url.searchParams.append("usecase", "deleteproduct");
-
-        try {
-          // Make a GET request to the Google Apps Script web app
-          const response = await fetch(url);
-          const data = await response.json();
-
-          // Handle the response
-          handleResponse2(data, submitButton);
-        } catch (error) {
-          alertMessagered.textContent = "An error occurred while deleting the product.";
-          showError(errorMessage, submitButton);
-        }
-      });
-
-      // Function to disable the submit button with feedback
-      function disableButton(button) {
-        button.style.backgroundColor = "lightgrey";
-        button.style.border = "lightgrey";
-        button.disabled = true;
-      }
-
-      // Function to reset the submit button's state
-      function resetSubmitButton(button) {
-        button.style.backgroundColor = "";
-        button.style.border = "";
-        button.disabled = false;
-      }
-
-      // Function to show error message and reset the button
-      function showError(errorMessage, button) {
-        errorMessage.style.display = "block";
-        setTimeout(() => {
-          errorMessage.style.display = "none";
-        }, 3000);
-        resetSubmitButton(button);
-      }
-
-      // Callback function to handle the response from the Apps Script
-      function handleResponse2(response, submitButton) {
-        const errorMessage = document.getElementById("box2");
-        const successMessage = document.getElementById("box");
-        const alertMessagered = document.getElementById("almessage");
-        const alertMessagegreen = document.getElementById("success");
-
-        if (response.status === "success") {
-          alertMessagegreen.textContent = "Product Deleted!";
-          successMessage.style.display = "block";
-          setTimeout(() => {
-            successMessage.style.display = "none";
-          }, 3000);
-          resetSubmitButton(submitButton);
-
-          // Optionally, clear input fields or perform other UI updates
-          document.getElementById("nameWithTitleproductname").value = "";
-        } else {
-          alertMessagered.textContent = `Error: ${response.message || "Unable to delete the product."}`;
-          showError(errorMessage, submitButton);
+          console.log(`${itemName} is no longer marked as complimentary.`);
+          // Handle unmarking as complimentary here
         }
       }
     </script>
+
 
 
 
@@ -1394,6 +1059,8 @@
     <script src="libs/jquery/jquery.js"></script>
     <script src="libs/popper/popper.js"></script>
     <script src="js/bootstrap.js"></script>
+
+    <script src="addorder.js"></script>
 
 
     <!--<script src="js/loginauthenticator.js"></script> -->
