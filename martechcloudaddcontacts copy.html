@@ -81,6 +81,7 @@
           display: flex;
           margin-top: 0px;
           width: 100%;
+          margin-bottom: 20px;
           
       }
 
@@ -99,12 +100,12 @@
           gap: 10px;
       }
       .menu-item1 {
-          width: 15%;
+          width: 18%;
           text-align: center;
           background-color: #ffffff;
           border-radius: 8px;
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-          padding: 15px;
+          padding: 5px;  /* //should be 15px */
           transition: transform 0.3s, box-shadow 0.3s;
           cursor: pointer;
       }
@@ -121,15 +122,12 @@
           overflow-y: auto;
       }
 
-      #menu-items::-webkit-scrollbar {
-          display: none; /* Hides scrollbar in WebKit browsers (e.g., Chrome, Safari) */
-      }
 
       .billing {
           width: 70%;
           background-color: #fff;
           margin: 0; /* Ensure no margin at the top */
-          padding: 0; /* Reset padding to 0 */
+          padding: 10px; /* Reset padding to 0 */
       }
 
       .billing ul {
@@ -411,7 +409,10 @@
 
     </style>
     <style>
-      
+      .collapsed {
+        display: none; /* Hides the navbar */
+        transition: all 0.3s ease-in-out; /* Smooth effect for toggling */
+      }  
     </style>
 
     
@@ -857,8 +858,8 @@
               <div class="container-xxl flex-grow-1 container-p-y">
                 <!-- Basic Layout -->
                 <!-- Basic with Icons -->
-                <div class="row pb-3">
-                  <div class="card mb-4">
+                <div class="row pb-3" style="margin-bottom: 0;">
+                  <div class="card mb-4" style="margin-bottom: 0;">
                     &nbsp;
                     <div class="input-group" >
                       <span class="input-group-text"><i class="tf-icons bx bx-search"></i></span>
@@ -870,9 +871,12 @@
                         oninput="searchItems()"
                       />
                       <button class="btn btn-primary" id="refreshmenu-btn" style="float: right;">Refresh Products</button>
-                      <button class="btn btn-danger" id="deletemenu-btn">Delete Product</button>
-                      <button class="btn btn-dark" id="addmenu-btn" style="float: right;">Add Product</button>
-                      
+                      &nbsp;
+                      <button class="btn btn-danger" id="reset-btn">Reset Order</button>
+                      &nbsp;
+                      <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
+                      &nbsp;
+                      <button class="btn btn-success" id="completeorder-btn" data-bs-toggle="modal" data-bs-target="#fullscreenModal">Complete Order</button>
                     </div>
                     
                     <div class="main-content1" style="display: flex; gap: 10px; align-items: left; justify-content: left; ">
@@ -923,28 +927,28 @@
                           <li class="page-item">
                             <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">12</a>
                           </li>
+                          <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" onclick="setActive(this)">13</a>
+                          </li>
                         </ul>
                       </nav>
                     </div>
                   </div>
                 </div>
 
-                <div class="row pb-3">
-                  <div class="card mb-4">
+                <div class="row pb-3" style="margin-top: 0;">
+                  <div class="card mb-4" style="margin-top: 0;">
                     <div id="spinner" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; text-align: center;">
                       <div class="spinner-border text-primary" role="status">
                           <span class="sr-only"></span>
                       </div>
                       <p>Loading...</p>
                     </div>
-                    <div class="main-content" style="margin-top: 20px;">
-                      <div class="menu-items1" style="margin-top: 20px;" id="menu-items"></div>
+                    <div class="main-content" >
+                      <div class="menu-items1" style="margin-top: 20px; height: 350px; overflow-y: auto;" id="menu-items"></div>
           
-                      <div class="billing" id="billing" style="max-height: 500px; position: relative;">
+                      <div class="billing" id="billing" style=" position: relative;">
                         <div class="button-container" style="margin-bottom: 20px; display: flex; justify-content: flex-end; gap: 10px;">
-                          <button class="btn btn-danger" id="reset-btn">Reset Order</button>
-                          <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
-                          <button class="btn btn-success" id="completeorder-btn" data-bs-toggle="modal" data-bs-target="#fullscreenModal">Complete Order</button>
                       </div>
                     
                         <div class="table-container" style=" position: relative;">
@@ -1022,6 +1026,10 @@
           // Handle unmarking as complimentary here
         }
       }
+    </script>
+
+    <script>
+
     </script>
 
 

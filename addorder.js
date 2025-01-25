@@ -68,28 +68,36 @@ async function showItems(category) {
             itemDiv.className = 'menu-item1';
             itemDiv.onclick = () => addToCart(category, index);
             itemDiv.innerHTML = `
-                <img class="card-img-top" src="samplefoodimage.png" alt="Card image cap" />
-                <h5 style="text-align: center; color: #3498db; ">${item.name}</h5>
-                <p class="card-text" style="color: #555; font-size: 1rem;">Price: ₹${item.price.toFixed(2)}</p>
+                <div style="
+                    position: relative;
+                    width: 100%;
+                    height: 100px;
+                    background-image: url('samplefoodimage.png');
+                    background-size: cover;
+                    background-position: center;
+                    border-radius: 8px;
+                    overflow: hidden;
+                ">
+                    <div style="
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        background: rgba(0, 0, 0, 0.6);
+                        color: #fff;
+                        text-align: center;
+                        padding: 10px 0;
+                        font-size: 16px;
+                        font-weight: bold;
+                    ">
+                        ${item.name}
+                    </div>
+                </div>
             `;
+            // <p class="card-text" style="color: #555; font-size: 1rem;">Price: ₹${item.price.toFixed(2)}</p>
             menuItemsDiv.appendChild(itemDiv);
         });
     } else {
         menuItemsDiv.innerHTML = `<p>No items available for this category.</p>`;
-    }
-
-    // Add 10 empty boxes at the end
-    for (let i = 0; i < 15; i++) {
-        const emptyBox = document.createElement('div');
-        emptyBox.className = 'menu-item1';
-        emptyBox.style.border = '1px dashed #ddd'; // Optional: dashed border for empty boxes
-        emptyBox.style.height = '150px'; // Adjust height as needed
-        emptyBox.style.display = 'flex';
-        emptyBox.style.justifyContent = 'center';
-        emptyBox.style.alignItems = 'center';
-        emptyBox.style.color = '#aaa'; // Light gray text color
-        emptyBox.innerText = '';
-        menuItemsDiv.appendChild(emptyBox);
     }
 }
 
@@ -113,9 +121,30 @@ async function searchItems() {
                 itemDiv.className = 'menu-item1';
                 itemDiv.onclick = () => addToCart(category, index);
                 itemDiv.innerHTML = `
-                    <img class="card-img-top" src="samplefoodimage.png" alt="Card image cap" />
-                    <h5 style="text-align: center; color: #3498db;">${item.name}</h5>
-                    <p class="card-text">Price: ₹${item.price.toFixed(2)}</p>
+                    <div style="
+                        position: relative;
+                        width: 100%;
+                        height: 100px;
+                        background-image: url('samplefoodimage.png');
+                        background-size: cover;
+                        background-position: center;
+                        border-radius: 8px;
+                        overflow: hidden;
+                    ">
+                        <div style="
+                            position: absolute;
+                            bottom: 0;
+                            width: 100%;
+                            background: rgba(0, 0, 0, 0.6);
+                            color: #fff;
+                            text-align: center;
+                            padding: 10px 0;
+                            font-size: 16px;
+                            font-weight: bold;
+                        ">
+                            ${item.name}
+                        </div>
+                    </div>
                 `;
                 menuItemsDiv.appendChild(itemDiv);
                 foundItems = true;
@@ -414,7 +443,7 @@ function setActive(element) {
             const menuItemsList = Array.from(menuItemsContainer.querySelectorAll('.menu-item1')); // Dynamically created items
             const itemIndex = menuItemsList.findIndex(menuItem => {
               // Compare the text inside the <h5> tag to match the item name
-              return menuItem.querySelector('h5').textContent.trim() === item.name;
+              return menuItem.querySelector('div div').textContent.trim() === item.name;
             });
 
             if (itemIndex !== -1) {
@@ -680,3 +709,8 @@ document.getElementById("refreshmenu-btn").addEventListener("click", async () =>
       submitButton.disabled = false;
     }
   });
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //close navbar
+
