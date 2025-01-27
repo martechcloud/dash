@@ -259,154 +259,8 @@
 
       /* Subtotal styling */
       .billing .total span {
-          color: #e91e63;
+          color: greenyellow;
       }
-
-      .billing2 {
-          width: 50%;
-          background-color: #fff;
-          margin: 0 auto; /* Center the container */
-          padding: 20px; /* Add padding for better spacing */
-          border-radius: 8px; /* Rounded corners */
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-          overflow-y: auto;
-      }
-
-      .billing2 ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          border-collapse: collapse;
-          width: 100%;
-      }
-
-      .billing2 ul li {
-          display: grid;
-          grid-template-columns: 3fr 1fr 1fr 1fr;
-          padding: 12px 10px; /* Increased padding for better spacing */
-          font-size: 15px; /* Slightly bigger font size */
-          color: #555;
-          border-bottom: 1px solid #eee;
-      }
-
-      .billing2 ul li:last-child {
-          border-bottom: none;
-      }
-
-      .billing2 ul li .item-name {
-          padding-left: 10px;
-          font-weight: 500;
-      }
-
-      .billing2 .quantity-control {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-      }
-
-      .billing2 .quantity-control button {
-          margin: 0 5px;
-          padding: 6px 12px;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          font-size: 14px;
-          transition: background-color 0.3s;
-      }
-
-      .billing2 .quantity-control button:hover {
-          background-color: #0056b3;
-      }
-
-      .billing2 .total {
-          font-weight: bold;
-          font-size: 20px;
-          color: #333;
-          text-align: right;
-          border-top: 2px solid #ddd;
-          padding: 15px 20px 10px 0;
-          margin-top: 20px; /* Add space before subtotal */
-      }
-
-      .billing2 .total span {
-          color: #e91e63;
-          font-size: 22px; /* Slightly larger text for emphasis */
-          font-weight: 600;
-      }
-
-      .billing2 ul li.header {
-          font-weight: bold;
-          background-color: #f7f7f7;
-          border-top: 2px solid #ddd;
-      }
-
-      .billing2 ul li.header div {
-          padding: 10px;
-          text-align: center;
-          background-color: #f1f1f1;
-          border-bottom: 1px solid #ddd;
-      }
-
-      .billing2 table {
-          width: 100%;
-          border-collapse: collapse;
-          margin: 0 0 20px 0;
-          padding: 0;
-      }
-
-      .billing2 th,
-      .billing2 td {
-          text-align: left;
-          padding: 10px;
-          border-bottom: 1px solid #ddd;
-      }
-
-      .billing2 th {
-          background-color: #343a40;
-          color: white;
-          font-weight: bold;
-          font-size: 16px;
-          text-align: center;
-          border-radius: 5px;
-      }
-
-      .billing2 th:first-child {
-          text-align: left;
-      }
-
-      .billing2 td {
-          color: #555;
-          font-size: 16px;
-          text-align: center;
-      }
-
-      .billing2 td:first-child {
-          text-align: left;
-      }
-
-      .billing2 thead tr {
-          border-bottom: 2px solid #ddd;
-      }
-
-      .billing2 ul#bill-items {
-          list-style-type: none;
-          padding: 0;
-          margin: 0 0 20px;
-      }
-
-      .billing2 ul#bill-items li {
-          padding: 10px 0;
-          border-bottom: 1px solid #f1f1f1;
-          color: #666;
-          font-size: 15px;
-      }
-
-      .billing2 ul#bill-items li:last-child {
-          border-bottom: none;
-      }
-
     </style>
     <style>
       .collapsed {
@@ -757,66 +611,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="fullscreenModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <select class="form-select" id="discountdropdown" aria-label="">
-                    <option selected>Add Discount</option>
-                    <option value="10">10%</option>
-                    <option value="20">20%</option>
-                    <option value="30">30%</option>
-                    <option value="40">40%</option>
-                    <option value="55">50%</option>
-                    <option value="60">60%</option> 
-                    <option value="70">70%</option>
-                    <option value="80">80%</option> 
-                    <option value="90">90%</option> 
-                    <option value="100">100%</option>  
-                  </select>
-                  &nbsp;
-                  <div class="billing2" id="billing">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>ITEM NAME</th>
-                          <th>QUANTITY</th>
-                          <th>PRICE</th>
-                          <th>TOTAL</th>
-                          <th>COMPLIMENTORY</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- Dynamic rows will be appended here -->
-                      </tbody>
-                    </table>
-                    <ul id="bill-items">
-                    </ul>
-                    <div class="total">
-                      SUBTOTAL: ₹<span id="subtotal2">0.00</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
           
           <div
             class="bs-toast toast toast-placement-ex m-2 bg-success bottom-0 end-0"
@@ -858,8 +652,8 @@
               <div class="container-xxl flex-grow-1 container-p-y">
                 <!-- Basic Layout -->
                 <!-- Basic with Icons -->
-                <div class="row pb-3" style="margin-bottom: 0;">
-                  <div class="card mb-4" style="margin-bottom: 0;">
+                <div class="row" style="margin-bottom: 0;">
+                  <div class="card mb-2" style="margin-bottom: 0;">
                     &nbsp;
                     <div class="input-group" >
                       <span class="input-group-text"><i class="tf-icons bx bx-search"></i></span>
@@ -876,7 +670,7 @@
                       &nbsp;
                       <button class="btn btn-secondary" id="draft-btn">Draft Order</button>
                       &nbsp;
-                      <button class="btn btn-success" id="completeorder-btn" data-bs-toggle="modal" data-bs-target="#fullscreenModal">Complete Order</button>
+                      <button class="btn btn-success" onclick = "document.getElementById('draft-btn').click();" id="completeorder-btn" data-bs-toggle="modal" data-bs-target="#fullscreenModal">Complete Order</button>
                     </div>
                     
                     <div class="main-content1" style="display: flex; gap: 10px; align-items: left; justify-content: left; ">
@@ -945,20 +739,21 @@
                       <p>Loading...</p>
                     </div>
                     <div class="main-content" >
-                      <div class="menu-items1" style="margin-top: 20px; height: 350px; overflow-y: auto;" id="menu-items"></div>
+                      <div class="menu-items1" style="margin-top: 20px; height: 420px; overflow-y: auto;" id="menu-items"></div>
           
                       <div class="billing" id="billing" style=" position: relative;">
                         <div class="button-container" style="margin-bottom: 20px; display: flex; justify-content: flex-end; gap: 10px;">
                       </div>
                     
-                        <div class="table-container" style=" position: relative;">
+                        <div class="table-container" style=" position: relative; height: 350px; overflow-y: auto;">
                             <table style="width: 100%; border-collapse: collapse;">
                               <thead style="position: sticky; top: 0; background-color: #fff; z-index: 1; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
                                     <tr>
                                         <th>ITEM NAME </th>
                                         <th>QUANTITY</th>
-                                        <th>PRICE</th>
                                         <th>TOTAL</th>
+                                        <th>FREEWILL</th>
+                                        <th>WAVE%</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -971,9 +766,34 @@
                         </ul>
                     
                         <!-- Fixed subtotal line at the bottom -->
-                        <div class="total" style=" width: 100%; background-color: #fff; padding: 10px; border-top: 1px solid #ccc;">
-                            SUBTOTAL: ₹<span id="subtotal">0.00</span>
-                        </div>
+                        <div class="total" style="width: 100%; background-color: black; padding: 10px; border-top: 1px solid #ccc; display: flex; align-items: center; gap: 10px;">
+                          <select class="form-select" id="discountdropdown1" aria-label="" style="flex-shrink: 0; max-width: 150px;">
+                            <option selected>Add Discount</option>
+                            <option value="10">10%</option>
+                            <option value="20">20%</option>
+                            <option value="30">30%</option>
+                            <option value="40">40%</option>
+                            <option value="55">50%</option>
+                            <option value="60">60%</option>
+                            <option value="70">70%</option>
+                            <option value="80">80%</option>
+                            <option value="90">90%</option>
+                            <option value="100">100%</option>
+                          </select>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="currencyInput"
+                            placeholder="Round Bill: ₹0.00"
+                            aria-describedby="defaultFormControlHelp"
+                            style="flex-shrink: 0; max-width: 150px;"
+                            onblur="formatCurrency(this)" 
+                            onfocus="removeCurrencyFormat(this)"
+                          />
+                          <div style="margin-left: auto; color: greenyellow;">
+                            TOTAL: ₹<span id="subtotal">0.00</span>
+                          </div>
+                        </div>     
                     </div>
                     </div>
                   </div>
@@ -983,55 +803,6 @@
             </div>
           </div>
           </div></div>
-
-
-
-    <script>
-      document.getElementById('discountdropdown').addEventListener('change', function () {
-        // Get the selected value from the dropdown
-        const selectedValue = this.value; // `this` refers to the dropdown element
-
-        if (selectedValue !== "Add Discount") {
-          // Convert the value to a percentage (selectedValue is already the percentage)
-          const discountPercentage = parseInt(selectedValue); // No need for *10
-
-          // Calculate the discount
-          const discount = (subtotal2.textContent * discountPercentage) / 100;
-          console.log(subtotal2.textContent)
-          console.log(discountPercentage)
-
-          // Calculate the discounted price
-          const discountPrice = subtotal2.textContent - discount;
-
-          // Log the discounted price for debugging
-          const subtotalSpan2 = document.getElementById('subtotal2');
-          subtotalSpan2.textContent = discountPrice.toFixed(2);
-        } else {
-          if (selectedValue === "Add Discount") {
-          const subtotalSpan2 = document.getElementById('subtotal2');
-          subtotalSpan2.textContent = subtotal.textContent;
-          }
-        }
-      });
-    </script>
-
-    <script>
-      function toggleComplimentary(itemName, itemPrice) {
-        const checkbox = document.getElementById(`complimentary-${itemName}`);
-        if (checkbox.checked) {
-          console.log(`${itemName} is marked as complimentary. Price: ₹${itemPrice.toFixed(2)}`);
-          // Additional logic for complimentary items can be added here
-        } else {
-          console.log(`${itemName} is no longer marked as complimentary.`);
-          // Handle unmarking as complimentary here
-        }
-      }
-    </script>
-
-    <script>
-
-    </script>
-
 
 
 

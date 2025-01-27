@@ -188,23 +188,19 @@ function addToCart(category, index) {
 // Update billing details
 function updateBilling() {
     const billTable = document.querySelector('.billing table tbody');
-    const billTable2 = document.querySelector('.billing2 table tbody');
     const subtotalSpan = document.getElementById('subtotal');
-    const subtotalSpan2 = document.getElementById('subtotal2');
     let subtotal = 0;
 
     // Clear existing table rows
     billTable.innerHTML = '';
-    billTable2.innerHTML = '';
 
     // Populate table rows based on cart items
     Object.values(cart).forEach(item => { 
         subtotal += item.price * item.quantity;
 
         // Create a table rowss
-        const row1 = document.createElement('tr');
-        const row2 = document.createElement('tr');
-        row1.innerHTML = `
+        const row = document.createElement('tr');
+        row.innerHTML = `
             <td>${item.name}</td>
             <td>
                 <div class="quantity-control">
@@ -213,46 +209,45 @@ function updateBilling() {
                     <button onclick="changeQuantity('${item.name}', 1)">+</button>
                 </div>
             </td>
-            <td>₹${item.price.toFixed(2)}</td>
             <td>₹${(item.price * item.quantity).toFixed(2)}</td>
+            <td>
+                <input type="checkbox" id="complimentary-${item.name}" name="complimentary-${item.name}" 
+                      onchange="toggleComplimentary('${item.name}', ${(item.price * item.quantity).toFixed(2)})" 
+                      style="width: 20px; height: 20px;">
+            </td>
+            <td>
+                <select class="form-select" id="discountdropdown-${item.name}" 
+                        data-price="${(item.price * item.quantity).toFixed(2)}"
+                        style="width: 80px; max-width: 80px; overflow: hidden;" onchange= resetupdatebilling();>
+                    <option selected></option>
+                    <option value="10">10%</option>
+                    <option value="20">20%</option>
+                    <option value="30">30%</option>
+                    <option value="40">40%</option>
+                    <option value="50">50%</option>
+                    <option value="60">60%</option>
+                    <option value="70">70%</option>
+                    <option value="80">80%</option>
+                    <option value="90">90%</option>
+                    <option value="100">100%</option>
+                </select>
+            </td>
         `;
 
-        row2.innerHTML = `
-            <td>${item.name}</td>
-            <td>
-                <div class="quantity-control">
-                    <button onclick="changeQuantity('${item.name}', -1)">-</button>
-                    ${item.quantity}
-                    <button onclick="changeQuantity('${item.name}', 1)">+</button>
-                </div>
-            </td>
-            <td>₹${item.price.toFixed(2)}</td>
-            <td>₹${(item.price * item.quantity).toFixed(2)}</td>
-            <td>
-                  <input type="checkbox" id="complimentary-${item.name}" name="complimentary-${item.name}" onchange="toggleComplimentary('${item.name}', ${(item.price * item.quantity).toFixed(2)})"style="width: 20px; height: 20px;">
-            </td>
-        `;
-        billTable.appendChild(row1);
-        billTable2.appendChild(row2);
+        billTable.appendChild(row);
     });
 
     // Handle empty cart
-    // Handle empty cart
     if (!subtotal) {
-        const emptyRow1 = document.createElement('tr');
-        emptyRow1.innerHTML = `
+        const emptyRow = document.createElement('tr');
+        emptyRow.innerHTML = `
             <td colspan="4" style="text-align: center;">No items selected</td>
         `;
-        billTable.appendChild(emptyRow1);
-
-        const emptyRow2 = document.createElement('tr');
-        emptyRow2.innerHTML = emptyRow1.innerHTML; // Duplicate for the second table
-        billTable2.appendChild(emptyRow2);
+        billTable.appendChild(emptyRow);
     }
 
     // Update subtotal
     subtotalSpan.textContent = subtotal.toFixed(2);
-    subtotalSpan2.textContent = subtotal.toFixed(2);
 }
 
 // Change item quantity in the cart
@@ -464,211 +459,6 @@ function setActive(element) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Add product
-
-document.getElementById("addmenu-btn").addEventListener("click", function () {
-    const modal = new bootstrap.Modal(document.getElementById("modalCenter"));
-    modal.show();
-  });
-
-document.getElementById("modal-addproduct").addEventListener("click", async () => {
-    const submitButton = document.getElementById('modal-addproduct');
-    const errorMessage = document.getElementById('box2');
-    const successMessage = document.getElementById('box');
-    const alertMessagered = document.getElementById('almessage');
-    const alertMessagegreen = document.getElementById('success');
-
-    // Get input values
-    const productName = document.getElementById("nameWithTitle").value.trim();
-    const productCategory = document.getElementById("emailWithTitle").value.trim();
-    const productPrice = document.getElementById("dobWithTitle").value.trim();
-
-    // Validate inputs
-    if (!productName || !productCategory || !productPrice) {
-      alertMessagered.textContent = "Please fill all fields before adding the product!";
-      showError(errorMessage, submitButton);
-      return;
-    }
-
-    if (isNaN(productPrice) || Number(productPrice) <= 0) {
-      alertMessagered.textContent = "Please enter a valid price!";
-      showError(errorMessage, submitButton);
-      return;
-    }
-
-    // Disable the submit button while processing
-    disableButton(submitButton);
-
-    // Construct the URL
-    const url = new URL("https://script.google.com/macros/s/AKfycbzkgR57couUXfhmao-0GP4khq5WVVDza3m3bnki9izyBV-vErRBkRg0fPfuDcBUA4ulUQ/exec");
-    url.searchParams.append("usecase", "addnewproduct");
-    url.searchParams.append("productName", productName);
-    url.searchParams.append("productCategory", productCategory);
-    url.searchParams.append("productPrice", productPrice);
-
-    try {
-      // Make the API call
-      const response = await fetch(url);
-      const data = await response.json();
-      handleResponse1(data, submitButton);
-    } catch (error) {
-      alertMessagered.textContent = "An unexpected error occurred. Please try again.";
-      showError(errorMessage, submitButton);
-    }
-  });
-
-  // Function to handle the server response
-  function handleResponse1(response, submitButton) {
-    const successMessage = document.getElementById('box');
-    const alertMessagegreen = document.getElementById('success');
-    const alertMessagered = document.getElementById('almessage');
-    const errorMessage = document.getElementById('box2');
-
-    if (response.status === "success") {
-      alertMessagegreen.textContent = "Product added to menu successfully!";
-      successMessage.style.display = "block";
-      setTimeout(() => {
-        successMessage.style.display = "none";
-      }, 3000);
-
-      // Clear input fields
-      document.getElementById("nameWithTitle").value = "";
-      document.getElementById("emailWithTitle").value = "";
-      document.getElementById("dobWithTitle").value = "";
-    } else {
-      alertMessagered.textContent = response.message || "Failed to add product. Please try again.";
-      showError(errorMessage, submitButton);
-    }
-
-    // Enable the submit button
-    enableButton(submitButton);
-  }
-
-  // Function to disable the submit button
-  function disableButton(button) {
-    button.style.backgroundColor = 'lightgrey';
-    button.style.border = 'lightgrey';
-    button.disabled = true;
-  }
-
-  // Function to enable the submit button
-  function enableButton(button) {
-    button.style.backgroundColor = '';
-    button.style.border = '';
-    button.disabled = false;
-  }
-
-  // Function to show error message and re-enable the button
-  function showError(errorMessage, button) {
-    errorMessage.style.display = "block";
-    setTimeout(() => {
-      errorMessage.style.display = "none";
-    }, 3000);
-    enableButton(button);
-  }
-
-  //////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Delete Product
-
-
-document.getElementById("deletemenu-btn").addEventListener("click", function () {
-    const modal = new bootstrap.Modal(document.getElementById("modalCenterdeletemenu"));
-    modal.show();
-});
-
-document.getElementById("modal-deleteproduct").addEventListener("click", async () => {
-    const submitButton = document.getElementById("modal-deleteproduct");
-    const errorMessage = document.getElementById("box2");
-    const successMessage = document.getElementById("box");
-    const alertMessagered = document.getElementById("almessage");
-    const alertMessagegreen = document.getElementById("success");
-
-    const productName = document.getElementById("nameWithTitleproductname").value.trim();
-
-    // Disable the submit button and provide visual feedback
-    disableButton(submitButton);
-
-    // Validate product name
-    if (!productName) {
-      alertMessagered.textContent = "Please add a product name!";
-      showError(errorMessage, submitButton);
-      return;
-    }
-
-    // Construct the URL for the Apps Script web app (replace with your actual web app URL)
-    const url = new URL("https://script.google.com/macros/s/AKfycbzkgR57couUXfhmao-0GP4khq5WVVDza3m3bnki9izyBV-vErRBkRg0fPfuDcBUA4ulUQ/exec");
-    url.searchParams.append("productName", productName);
-    url.searchParams.append("usecase", "deleteproduct");
-
-    try {
-      // Make a GET request to the Google Apps Script web app
-      const response = await fetch(url);
-      const data = await response.json();
-
-      // Handle the response
-      handleResponse2(data, submitButton);
-    } catch (error) {
-      alertMessagered.textContent = "An error occurred while deleting the product.";
-      showError(errorMessage, submitButton);
-    }
-  });
-
-  // Function to disable the submit button with feedback
-  function disableButton(button) {
-    button.style.backgroundColor = "lightgrey";
-    button.style.border = "lightgrey";
-    button.disabled = true;
-  }
-
-  // Function to reset the submit button's state
-  function resetSubmitButton(button) {
-    button.style.backgroundColor = "";
-    button.style.border = "";
-    button.disabled = false;
-  }
-
-  // Function to show error message and reset the button
-  function showError(errorMessage, button) {
-    errorMessage.style.display = "block";
-    setTimeout(() => {
-      errorMessage.style.display = "none";
-    }, 3000);
-    resetSubmitButton(button);
-  }
-
-  // Callback function to handle the response from the Apps Script
-  function handleResponse2(response, submitButton) {
-    const errorMessage = document.getElementById("box2");
-    const successMessage = document.getElementById("box");
-    const alertMessagered = document.getElementById("almessage");
-    const alertMessagegreen = document.getElementById("success");
-
-    if (response.status === "success") {
-      alertMessagegreen.textContent = "Product Deleted!";
-      successMessage.style.display = "block";
-      setTimeout(() => {
-        successMessage.style.display = "none";
-      }, 3000);
-      resetSubmitButton(submitButton);
-
-      // Optionally, clear input fields or perform other UI updates
-      document.getElementById("nameWithTitleproductname").value = "";
-    } else {
-      alertMessagered.textContent = `Error: ${response.message || "Unable to delete the product."}`;
-      showError(errorMessage, submitButton);
-    }
-  }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Needs to remove
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
 //Refresh Menu
 
 document.getElementById("refreshmenu-btn").addEventListener("click", async () => {
@@ -710,7 +500,133 @@ document.getElementById("refreshmenu-btn").addEventListener("click", async () =>
     }
   });
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //close navbar
+  //Add Tip in corrected format
 
+// Function to format input value as Indian currency
+// Function to format input as Indian currency (on blur)
+function formatCurrency(input) {
+  let value = input.value.replace(/[^0-9.]/g, ""); // Remove non-numeric characters
+  if (value) {
+    const parts = parseFloat(value).toFixed(2).split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{2})+(?!\d))/g, ",").replace(/^,/, "");
+    input.value = "₹" + parts.join(".");
+    resetupdatebilling()
+  } else {
+    input.value = ""; // Clear input if no valid value
+    resetupdatebilling()
+  }
+}
+
+// Function to remove currency format (on focus)
+function removeCurrencyFormat(input) {
+  input.value = input.value.replace(/[^0-9.]/g, ""); // Strip all formatting and show raw value
+  resetupdatebilling()
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function toggleComplimentary(itemName, itemPrice) {
+}
+
+
+document.getElementById('discountdropdown1').addEventListener('change', function () {
+  resetupdatebilling();
+});
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function resetupdatebilling() {
+  let subtotal = 0;
+
+  // Calculate the subtotal from the cart
+  Object.values(cart).forEach(item => {
+    subtotal += item.price * item.quantity;
+  });
+
+  // Calculate the total price of selected complimentary items
+  const checkboxes = document.querySelectorAll("input[type='checkbox']");
+  let totalComplimentaryPrice = 0;
+
+  checkboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      const itemName = checkbox.id.replace('complimentary-', ''); // Extract item name
+      const itemPriceMatch = checkbox.getAttribute('onchange').match(/,\s*([\d.]+)/); // Extract price from the onchange attribute
+
+      if (itemPriceMatch) {
+        const itemPrice = parseFloat(itemPriceMatch[1]);
+        totalComplimentaryPrice += itemPrice;
+      }
+    }
+  });
+
+  subtotal -= totalComplimentaryPrice;
+
+  // Calculate the total discount from dropdowns
+  const dropdowns = document.querySelectorAll(".form-select");
+  let totalDiscount = 0;
+
+  dropdowns.forEach(dropdown => {
+    const itemName = dropdown.id.replace('discountdropdown-', ''); // Extract item name
+    const discountValue = parseFloat(dropdown.value); // Get selected discount value
+    const itemPrice = parseFloat(dropdown.getAttribute('data-price')); // Get item price from data-price attribute
+
+    if (!isNaN(discountValue) && !isNaN(itemPrice)) {
+      const discountedAmount = (itemPrice * discountValue) / 100;
+      totalDiscount += discountedAmount;
+    }
+  });
+
+  subtotal -= totalDiscount;
+
+  // Update the subtotal display
+  const subtotalSpan = document.getElementById('subtotal');
+  subtotalSpan.textContent = subtotal.toFixed(2);
+
+  // Handle the global discount if applicable
+  const globalDiscountDropdown = document.querySelector(".total .form-select");
+  if (globalDiscountDropdown) {
+    const globalDiscountValue = parseFloat(globalDiscountDropdown.value);
+
+    if (!isNaN(globalDiscountValue)) {
+      const globalDiscountAmount = (subtotal * globalDiscountValue) / 100;
+      subtotal -= globalDiscountAmount;
+      subtotalSpan.textContent = subtotal.toFixed(2);
+    }
+  }
+  const settlement = document.getElementById('currencyInput');
+  let settlementValue = settlement.value.replace(/[₹,]/g, ''); // Remove ₹ and commas
+
+  // If the input is empty or invalid, consider the value as 0
+  settlementValue = settlementValue === '' ? 0 : parseFloat(settlementValue);
+
+  subtotal -= settlementValue;
+  const subtotalSpan1 = document.getElementById('subtotal');
+  subtotalSpan1.textContent = subtotal.toFixed(2);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+document.addEventListener('change', function (event) {
+  // Check if the event target is a checkbox
+  if (event.target.matches("input[type='checkbox']") && event.target.id.startsWith('complimentary-')) {
+    const checkbox = event.target;
+
+    // Extract the item name from the checkbox ID
+    const itemName = checkbox.id.replace('complimentary-', '');
+    
+    // Find the corresponding dropdown
+    const dropdown = document.getElementById(`discountdropdown-${itemName}`);
+    
+    // Disable or enable the dropdown based on the checkbox state
+    if (checkbox.checked) {
+      dropdown.disabled = true; // Disable the dropdown
+      dropdown.selectedIndex = 0;
+      resetupdatebilling();
+    } else {
+      dropdown.disabled = false; // Enable the dropdown
+      resetupdatebilling();
+    }
+  }
+});
